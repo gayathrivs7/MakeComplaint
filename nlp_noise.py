@@ -1,5 +1,5 @@
 #prg to remove stopwords 
-noise_list = [ "is", "a", " this",".","of","in","an","the","as","but","was"]
+noise_list = [ "is", "a", " this",".","of","in","an","the","as","but","was",";",":","were","am","are","I","at","on","under","over","it"]
 
 def remove_noise(input_text):
     words=input_text.split()
@@ -7,5 +7,5 @@ def remove_noise(input_text):
     noise_free_text = " ".join(noise_free_words)
     return noise_free_text
 
-text=remove_noise("this is a sample text of .  gayathri was in ")
+text=remove_noise("this is a sample text of .  gayathri was ; in : it in ")
 print(text)
