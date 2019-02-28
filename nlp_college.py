@@ -42,3 +42,17 @@ for w in words:
     if w not in stopWords:
         wordsFiltered.append(w)
 print(wordsFiltered)
+
+#========================Stemming=================================
+
+#stemming
+
+from nltk.stem import PorterStemmer
+from nltk.tokenize import sent_tokenize, word_tokenize
+# went is not working
+words = ["game","gaming","gamed","games"]
+ps = PorterStemmer()
+
+for w in words:
+    print(ps.stem(w))
+
