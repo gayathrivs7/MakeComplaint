@@ -88,5 +88,18 @@ for w in words:
     
  #Porter stemmer and Snowball stemmer working in similar manner   
 #lanca is not so good
-#==============================================    
+#=========================================Speech Tagging============================
+# labels verbs,nouns,pronouns etc
+
+#speech tagging
+
+import nltk
+nltk.download('averaged_perceptron_tagger')
+from nltk.tokenize import PunktSentenceTokenizer
+
+document = 'Whether you\'re new to programming or an experienced developer, it\'s easy to learn and use Python.'
+sentences = nltk.sent_tokenize(document) 
+for sent in sentences:
+    print(nltk.pos_tag(nltk.word_tokenize(sent)))
+       
 
