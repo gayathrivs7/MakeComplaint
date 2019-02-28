@@ -101,5 +101,21 @@ document = 'Whether you\'re new to programming or an experienced developer, it\'
 sentences = nltk.sent_tokenize(document) 
 for sent in sentences:
     print(nltk.pos_tag(nltk.word_tokenize(sent)))
+
+#=============Filtering from Speech tagging=================
+#filtering from Speech tagging
+import nltk
+from nltk.corpus import state_union
+from nltk.tokenize import PunktSentenceTokenizer
+
+document = 'Today the Netherlands celebrates King\'s Day. To honor this tradition, the Dutch embassy in San Francisco invited me to'
+sentences = nltk.sent_tokenize(document)  
+data = []
+for sent in sentences:
+    data = data + nltk.pos_tag(nltk.word_tokenize(sent))
+for w in data:
+    if 'VB' in w[1]:
+        print(w)
+        
        
 
