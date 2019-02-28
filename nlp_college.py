@@ -54,5 +54,6 @@ words = ["game","gaming","gamed","games"]
 ps = PorterStemmer()
 
 for w in words:
-    print(ps.stem(w))
+    print(w ," : " ,ps.stem(w))
+
 
