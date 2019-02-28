@@ -55,5 +55,38 @@ ps = PorterStemmer()
 
 for w in words:
     print(w ," : " ,ps.stem(w))
+#===============================stemming modified=====
 
+#stemming
+#3 stemmer alogirthms are used here
+
+from nltk.stem import PorterStemmer
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.stem.lancaster import LancasterStemmer
+from nltk.stem import SnowballStemmer
+
+
+# went is not working
+words = ["go","went","gone","games"]
+ps = PorterStemmer()
+lanca_stemmer = LancasterStemmer()
+sb_stemmer = SnowballStemmer("english",)
+print("=========Porter Stemmer======")
+for w in words:
+    print(w ," : " ,ps.stem(w))
+    
+print("=========Lanca Stemmer======")
+for w in words:
+
+    print(w ," : " ,lanca_stemmer.stem(w))
+    
+print("=========Snowball Stemmer======")
+for w in words:
+    
+    print(w ," : " ,sb_stemmer.stem(w))
+    
+    
+ #Porter stemmer and Snowball stemmer working in similar manner   
+#lanca is not so good
+    
 
