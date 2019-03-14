@@ -118,7 +118,16 @@ for w in data:
         print(w)
 
 #================================================================================================
-#============================NL Prediction=======================================================
+# NLP Tokenization thurdsay March 14
 
-       
+
+import nltk
+#Tokenzie using TreeBank Tokenizer
+
+text="This is Gayathri's book isn't it?"
+tokenizer=nltk.tokenize.TreebankWordTokenizer()
+tokens=tokenizer.tokenize(text)
+print(tokens)
+
+
 
