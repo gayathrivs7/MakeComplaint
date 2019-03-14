@@ -135,5 +135,13 @@ tokens1=tokenizer1.tokenize(text) #wordPunct
 
 print("Tree", tokens)
 print("WordPunct" ,tokens1)
+#=====================
+import nltk
 
+#
 
+text="This is Gayathri's book isn't it?"
+
+lemmatizer=nltk.stem.WordNetLemmatizer()
+
+" ".join(lemmatizer.lemmatize(token)for token in tokens)
