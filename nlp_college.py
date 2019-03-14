@@ -121,13 +121,19 @@ for w in data:
 # NLP Tokenization thurdsay March 14
 
 
+
 import nltk
 #Tokenzie using TreeBank Tokenizer
 
 text="This is Gayathri's book isn't it?"
-tokenizer=nltk.tokenize.TreebankWordTokenizer()
-tokens=tokenizer.tokenize(text)
-print(tokens)
 
+tokenizer=nltk.tokenize.TreebankWordTokenizer()
+tokenizer1=nltk.tokenize.WordPunctTokenizer()
+
+tokens=tokenizer.tokenize(text)
+tokens1=tokenizer1.tokenize(text) #wordPunct
+
+print("Tree", tokens)
+print("WordPunct" ,tokens1)
 
 
