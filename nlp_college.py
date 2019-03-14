@@ -145,3 +145,9 @@ text="This is Gayathri's book isn't it?"
 lemmatizer=nltk.stem.WordNetLemmatizer()
 
 " ".join(lemmatizer.lemmatize(token)for token in tokens)
+#================stemming
+#stemmer
+stemmer=nltk.stem.PorterStemmer()
+print("porter stemmer")
+" ".join(stemmer.stem(token)for token in tokens)
+
