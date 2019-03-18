@@ -151,3 +151,62 @@ stemmer=nltk.stem.PorterStemmer()
 print("porter stemmer")
 " ".join(stemmer.stem(token)for token in tokens)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import nltk
+import spacy
+import pandas as pd
+
+nlp = spacy.load('en') #loading English
+
+data=pd.read_table('/home/user/Complaint/MakeComplaint/data.csv')
+frames = [data]
+
+#opening csv
+myfile = open('/home/user/Complaint/MakeComplaint/data.csv').read()
+frames = [data]
+doc_file= nlp(myfile)
+
+
+#fetching the headers
+
+for colname in frames:
+    print(colname.columns)
+    
+    
+    
+#keys = ['Water Authority','KSEB','KSRTC','PWD','Environment and climate change','MVD']
+#df=pd.concat(frames,keys=keys)
+#df
+print(frames)
+
+
+
+#print(doc_file)
+
+#tokenizer=nltk.tokenize.TreebankWordTokenizer()
+#tokens=tokenizer.tokenize(text)
+#print("Tree", tokens)
+
