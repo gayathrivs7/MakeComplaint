@@ -8,24 +8,10 @@
    "source": [
     "from flask import Flask\n",
     "\n",
+    "app = Flask(__name__)\n",
     "\n",
-    "app =  Flask(__name__)\n",
-    "\n",
-    "@app.route('/hell/<name>')#route,filename,variable\n",
-    "def hello_name(name):\n",
-    "    return 'Hello %s' % name\n",
-    "if __name__=='__main__':\n",
-    "    app.run()\n",
-    "    \n",
-    "    #open the browser and type http://localhost:5000/hell/TutorialsPoint."
+    "app.route('/blog/<int>')"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {
