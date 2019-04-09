@@ -5,24 +5,6 @@
    "execution_count": null,
    "metadata": {},
    "outputs": [],
-   "source": [
-    "from flask import Flask\n",
-    "\n",
-    "\n",
-    "app =  Flask(__name__)\n",
-    "\n",
-    "@app.route('/hell/<name>')\n",
-    "def hello_name(name):\n",
-    "    return 'Hello %s' % name\n",
-    "if __name__=='__main__':\n",
-    "    app.run()"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": []
   }
  ],
