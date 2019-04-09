@@ -25,7 +25,15 @@
    "execution_count": null,
    "metadata": {},
    "outputs": [],
-   "source": []
+   "source": [
+    "from flask import Flask\n",
+    "\n",
+    "app = Flask(__name__)\n",
+    "\n",
+    "@app.route('/flask')\n",
+    "def show_f():\n",
+    "    return"
+   ]
   }
  ],
  "metadata": {
