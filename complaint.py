@@ -212,6 +212,7 @@ class Main:
         porter=PorterStemmer()
         stemmer = SnowballStemmer("english")
         lemmatizer = WordNetLemmatizer()
+        ############################################ENV lemm
         env_stem = []
         
         # ps.stem(w)) 
@@ -242,6 +243,37 @@ class Main:
                 env_inner.append(lm)
             env_lemm.append(env_inner)
         print(env_lemm)
+#======================================================water
+        water_stem = []
+        
+        # ps.stem(w)) 
+        print("\n\nfor Stemming \n\n")
+        water_inner=[]
+        for li in water_list:
+            water_inner=[]
+            for j in li:
+                #st=porter.stem(j)
+                st=stemmer.stem(j)
+                
+                water_inner.append(st)
+            water_stem.append(water_inner)
+        print(water_stem)
+        
+        #lemma
+        water_lemm = []
+        
+        # ps.stem(w)) 
+        print("\n\nfor Lemmatisation\n\n")
+        water_inner=[]
+        for li in water_stem:
+            water_inner=[]
+            for j in li:
+                
+                lm = lemmatizer.lemmatize(j)
+                
+                water_inner.append(lm)
+            water_lemm.append(water_inner)
+        print(water_lemm)
       
         
 
@@ -249,7 +281,7 @@ class Main:
         
         
             
-        return(water_list,pwd_list,ksrtc_list,kseb_list,env_list)
+        return(water_lemm,pwd_list,ksrtc_list,kseb_list,env_lemm)
 
 
    
@@ -898,6 +930,16 @@ class Main:
                             print(similarity_list)
                             print("\nSimilarity Max\n")
                             print(similarity_max )
+                            for keyword in keywords_string:
+                                for word in similarity_string:
+
+                                    if similarity_max==keyword.similarity(word):
+                                        print(keyword.text,word.text)
+
+                                    if keyword.similarity(word)>= 0.35038363:
+                                        print("\nThresh higher"+keyword.text,word.text)
+
+
 
                             
                                     
