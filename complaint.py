@@ -1037,6 +1037,23 @@ class Main:
                                       #  print("\nThresh higher"+keyword.text,word.text)
 
                             print("\n New mapped word "+new_mapped_word)
+                            if new_mapped_word in water_list:
+                                print("Predicted class : "+depart_dict[1])
+                            if new_mapped_word in pwd_list:
+                                print("Predicted class : "+depart_dict[2])
+                            if new_mapped_word in kseb_list:
+                                print("Predicted class : "+depart_dict[3])
+                            if new_mapped_word in ksrtc_list:
+                                print("Predicted class : "+depart_dict[4])
+                            if new_mapped_word in env_list:
+                                print("Predicted class : "+depart_dict[5])
+
+
+                            
+
+
+
+
 
 
 
