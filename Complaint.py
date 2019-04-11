@@ -1,8 +1,9 @@
 #main program
 import spacy
 import pandas as pd
-from preprocess import punctuate #preprocess.py
+from preprocess import data_clean #preprocess.py
 import preprocess
+
 
 
 class Complaint:
@@ -33,7 +34,7 @@ nlp = spacy.load('en_core_web_md')
          
 c = Complaint(file,nlp)
 category,dataset = c.department_class()
-preprocess.punctuate(dataset)
+preprocess.data_clean(dataset)
 
     
 

@@ -1,22 +1,24 @@
 
+def data_clean(dataset):
+    
+    
+    
+    
+    # unpunctuate and lower case
+    dataset['Subject'] = dataset['Subject'].str.replace('[^\w\s]','').str.lower()
+    dataset['Complaint'] = dataset['Complaint'].str.replace('[^\w\s]','').str.lower()
+
+    dataset['Complaint'] =  dataset['Complaint'].str.replace(',',' ').str.lower() 
+    
+    dataset['Subject'] =  dataset['Subject'] .str.replace('\d+', ' ')
+    dataset['Complaint'] =  dataset['Complaint'] .str.replace('\d+', ' ')
+    #dataset['Subject']   = dataset['Subject'].str.replace('[^\P{P}-]','').str.lower()
+    #dataset['Complaint']   = dataset['Complaint'].str.replace('[^\P{P}-]','').str.lower()   
+    #rRemoving new lines in the subject field
+    dataset['Subject'] =  dataset['Subject'].str.rstrip('\n')
+    print(dataset['Complaint'])
 
 
-def punctuate(dataset):
-    punctuations = '''!()-[]{};:'"\,.<>/?@#$%^&*_~'''
-    text = dataset['Subject']
+    
 
-       
-
-    # remove punctuation from the string
-    no_punct = ""
-    no_punctuate =[]
-    for char in  dataset['Subject']:
-
-        if char not in punctuations:
-            no_punct = no_punct + char
-            no_punctuate.append(no_punct)
-
-        # display the unpunctuated string
-    #print(no_punctuate)
-    return(no_punctuate)
-
+    
