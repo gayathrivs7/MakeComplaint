@@ -888,13 +888,19 @@ class Main:
                         if ksrtc_length == 0:
                             keywords_string   = self.nlp(keywords_string)
                             similarity_string = self.nlp(similarity_string)
+                            similarity_list=[]
                             for keyword in keywords_string:
                                 for word in similarity_string:
                                     print(keyword.text, word.text, keyword.similarity(word))
-                                    
-                                    if(keyword.similarity(word)>0.30):
-                                        print(keyword.text,word.text)
+                                    similarity_list.append(keyword.similarity(word))
+                                    similarity_max = max(similarity_list)
+                            print("\nSimilarity List\n")        
+                            print(similarity_list)
+                            print("\nSimilarity Max\n")
+                            print(similarity_max )
 
+                            
+                                    
         
                             
                             
