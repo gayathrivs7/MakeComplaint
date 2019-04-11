@@ -891,6 +891,10 @@ class Main:
                             for keyword in keywords_string:
                                 for word in similarity_string:
                                     print(keyword.text, word.text, keyword.similarity(word))
+                                    
+                                    if(keyword.similarity(word)>0.30):
+                                        print(keyword.text,word.text)
+
         
                             
                             
