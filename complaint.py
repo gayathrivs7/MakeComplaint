@@ -1030,10 +1030,13 @@ class Main:
                                 for word in similarity_string:
 
                                     if similarity_max==keyword.similarity(word):
+                                        new_mapped_word = word.text
                                         print(keyword.text,word.text)
 
-                                    if keyword.similarity(word)>= 0.35038363:
-                                        print("\nThresh higher"+keyword.text,word.text)
+                                    #if keyword.similarity(word)>= 0.35038363:
+                                      #  print("\nThresh higher"+keyword.text,word.text)
+
+                            print("\n New mapped word "+new_mapped_word)
 
 
 
