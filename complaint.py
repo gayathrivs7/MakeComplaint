@@ -243,7 +243,7 @@ class Main:
                 env_inner.append(lm)
             env_lemm.append(env_inner)
         print(env_lemm)
-#======================================================water
+#======================================================  water
         water_stem = []
         
         # ps.stem(w)) 
@@ -274,6 +274,101 @@ class Main:
                 water_inner.append(lm)
             water_lemm.append(water_inner)
         print(water_lemm)
+        #======================================================  pwd
+        pwd_stem = []
+        
+        # ps.stem(w)) 
+        print("\n\nfor Stemming \n\n")
+        pwd_inner=[]
+        for li in pwd_list:
+            pwd_inner=[]
+            for j in li:
+                #st=porter.stem(j)
+                st=stemmer.stem(j)
+                
+                pwd_inner.append(st)
+            pwd_stem.append(pwd_inner)
+        print(pwd_stem)
+        
+        #lemma
+        pwd_lemm = []
+        
+        # ps.stem(w)) 
+        print("\n\nfor Lemmatisation\n\n")
+        pwd_inner=[]
+        for li in pwd_stem:
+            pwd_inner=[]
+            for j in li:
+                
+                lm = lemmatizer.lemmatize(j)
+                
+                pwd_inner.append(lm)
+            pwd_lemm.append(pwd_inner)
+        print(pwd_lemm)
+        #======================================================  kseb
+        kseb_stem = []
+        
+        # ps.stem(w)) 
+        print("\n\nfor Stemming \n\n")
+        pwd_inner=[]
+        for li in kseb_list:
+            kseb_inner=[]
+            for j in li:
+                #st=porter.stem(j)
+                st=stemmer.stem(j)
+                
+                kseb_inner.append(st)
+            kseb_stem.append(kseb_inner)
+        print(kseb_stem)
+        
+        #lemma
+        kseb_lemm = []
+        
+        # ps.stem(w)) 
+        print("\n\nfor Lemmatisation\n\n")
+        kseb_inner=[]
+        for li in kseb_stem:
+            kseb_inner=[]
+            for j in li:
+                
+                lm = lemmatizer.lemmatize(j)
+                
+                kseb_inner.append(lm)
+            kseb_lemm.append(kseb_inner)
+        print(kseb_lemm)
+         #======================================================  ksrtc
+        ksrtc_stem = []
+        
+        # ps.stem(w)) 
+        print("\n\nfor Stemming \n\n")
+        ksrtc_inner=[]
+        for li in ksrtc_list:
+            ksrtc_inner=[]
+            for j in li:
+                #st=porter.stem(j)
+                st=stemmer.stem(j)
+                
+                ksrtc_inner.append(st)
+            ksrtc_stem.append(ksrtc_inner)
+        print(ksrtc_stem)
+        
+        #lemma
+        ksrtc_lemm = []
+        
+        # ps.stem(w)) 
+        print("\n\nfor Lemmatisation\n\n")
+        ksrtc_inner=[]
+        for li in ksrtc_stem:
+            ksrtc_inner=[]
+            for j in li:
+                
+                lm = lemmatizer.lemmatize(j)
+                
+                ksrtc_inner.append(lm)
+            ksrtc_lemm.append(ksrtc_inner)
+        print(ksrtc_lemm)
+
+
       
         
 
@@ -281,7 +376,8 @@ class Main:
         
         
             
-        return(water_lemm,pwd_list,ksrtc_list,kseb_list,env_lemm)
+        return(water_lemm,pwd_lemm,ksrtc_list,kseb_lemm,env_lemm)
+        #return(water_list,pwd_list,ksrtc_list,kseb_list,env_list)
 
 
    
