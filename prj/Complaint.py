@@ -9,6 +9,8 @@ import tokenise
 from tokenise import tokenisation
 import frequency
 from frequency import word_frequency
+import topwords
+from topwords import most_repeated_keywords
 
 
 
@@ -31,9 +33,6 @@ class Complaint:
         return departments,datasets
 
 
-
-
-
  #Execution begins
 files =   '/home/gayathri/project/MakeComplaint/data.csv'   
 nlp = spacy.load('en_core_web_md')
@@ -51,3 +50,4 @@ water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm = tokenise.tokenisation(dfwate
 water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq = frequency.word_frequency(water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm)
 
 
+water_lis,pwd_lis,ksrtc_lis,kseb_lis,env_lis=topwords.most_repeated_keywords(water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq,"manual")
