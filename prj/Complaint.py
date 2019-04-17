@@ -13,6 +13,10 @@ import topwords
 from topwords import most_repeated_keywords
 import testdata
 from testdata import test
+import department
+from department import department_class
+import predict
+from predict import evaluate
 
 
 
@@ -53,4 +57,6 @@ water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq = frequency.word_frequency(wat
 
 
 water_lis,pwd_lis,ksrtc_lis,kseb_lis,env_lis=topwords.most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq,"manual")
+#dept=department_class()
 keywords,item=testdata.test()
+predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
