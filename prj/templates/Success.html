@@ -5,6 +5,26 @@
     <body>
               
             <h2>{{message}}</h2>
+            {% if flags[0] == 1 %}
+            <h2> Predicted class : {{name[0]}}</h2>
+            {%endif%}
+
+            {%if  flags[1] == 1 %}
+            <h2> Predicted class : {{name[1]}}</h2>
+            {%endif%}
+              
+            {%if  flags[2] ==1%}
+            <h2> Predicted class : {{name[2]}}</h2>
+            {%endif%}
+
+            {%if  flags[3]==1%}
+            <h2> Predicted class : {{name[3]}}</h2>
+            {%endif%}
+            
+            {%if flags[4] == 1%}
+            <h2> Predicted class : {{name[4]}}</h2>
+            {%endif%}
+    
     
     </body>
 </html>

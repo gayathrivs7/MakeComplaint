@@ -49,11 +49,20 @@ def take():
     message  = subject + " "+ mess
     keywords,item=testdata.test(message)
     water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept = predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
+    name= water_dept+pwd_dept+kseb_dept+ksrtc_dept+env_dept
+    name = ['Water Authority','PWD',  'KSEB',  'KSRTC','Environment and climate change']
+    flags= [0,1,2,3,4]
+    flags[0]= water_flag
+    flags[1]=pwd_flag
+    flags[2] =kseb_flag
+    flags[3]  = ksrtc_flag
+    flags[4]= env_flag
+
     
     if subject and message:
 
 
-        return render_template('Success.html',message=message,water_flag=water_flag,pwd_flag=pwd_flag,kseb_flag=kseb_flag,ksrtc_flag=ksrtc_flag,env_flag =env_flag,water_dept=water_dept,pwd_dept=pwd_dept,kseb_dept=kseb_dept,ksrtc_dept=ksrtc_dept,env_dept=env_dept)
+        return render_template('Success.html',name =name,flags =flags)
     else:
         return redirect(url_for('log') )
 
