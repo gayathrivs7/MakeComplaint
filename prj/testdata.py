@@ -5,8 +5,8 @@ from collections import Counter
 import nltk
 from nltk.corpus import stopwords
 
-def test():
-    text_data = input("Enter complaint")
+def test(text_data):
+    
     text_data= text_data.replace('[^\w\s]','').lower()
     
     
