@@ -1084,19 +1084,20 @@ class Main:
 file =   '/home/gayathri/project/MakeComplaint/data.csv'   
 nlp = spacy.load('en_core_web_md')
 
-x= Main(file,nlp)
-x.punctuate()
-x.data_clean()
-dfwater,dfpwd,dfksrtc,dfkseb,dfenv=x.dataframing(x.dataset)
+#x= Main(file,nlp)
+#x.punctuate()
+#x.data_clean()
+#dfwater,dfpwd,dfksrtc,dfkseb,dfenv=x.dataframing(x.dataset)
 
-water_list,pwd_list,ksrtc_list,kseb_list,env_list = x.tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv)
+#water_list,pwd_list,ksrtc_list,kseb_list,env_list = x.tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv)
 
-water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq = x.word_frequency(water_list,pwd_list,ksrtc_list,kseb_list,env_list)
+#water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq = x.word_frequency(water_list,pwd_list,ksrtc_list,kseb_list,env_list)
+#===================================================================================
 #x.most_repeated_keywords(water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq)
 #x.most_repeated_keyword_lib(dfenv) 
+#===================================================================================
+#water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis=x.jump(0)
 
-water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis=x.jump(0)
-
-keywords,item=x.test()
-dept=x.department_class()
-x.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept)
+#keywords,item=x.test()
+#dept=x.department_class()
+#x.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept)

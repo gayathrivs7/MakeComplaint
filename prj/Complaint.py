@@ -17,7 +17,7 @@ import department
 from department import department_class
 import predict
 from predict import evaluate
-import login_flask
+
 
 
 
@@ -45,20 +45,20 @@ class Complaint:
 files =   '/home/gayathri/project/MakeComplaint/data.csv'   
 nlp = spacy.load('en_core_web_md')
          
-c = Complaint(files,nlp)
+#c = Complaint(files,nlp)
 
-category,dataset = c.department_class()
+#category,dataset = c.department_class()
 
-dataset = preprocess.data_clean(dataset)
+#dataset = preprocess.data_clean(dataset)
 
-dfwater,dfpwd,dfksrtc,dfkseb,dfenv = dataframes.dataframing(dataset)
+#dfwater,dfpwd,dfksrtc,dfkseb,dfenv = dataframes.dataframing(dataset)
 
-water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm = tokenise.tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv)
+#water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm = tokenise.tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv)
 
-water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq = frequency.word_frequency(water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm)
+#water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq = frequency.word_frequency(water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm)
 
 
-water_lis,pwd_lis,ksrtc_lis,kseb_lis,env_lis=topwords.most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq,"manual")
-#dept=department_class()
-keywords,item=testdata.test()
-predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
+#water_lis,pwd_lis,ksrtc_lis,kseb_lis,env_lis=topwords.most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq,"manual")
+#no need                dept=department_class()
+#keywords,item=testdata.test()
+#predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
