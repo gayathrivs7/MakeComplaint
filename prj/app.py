@@ -48,11 +48,12 @@ def take():
     mess =  request.args.get('message')
     message  = subject + " "+ mess
     keywords,item=testdata.test(message)
-    predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
-
+    water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept = predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
+    
     if subject and message:
 
-        return render_template('Success.html',message=message)
+
+        return render_template('Success.html',message=message,water_flag=water_flag,pwd_flag=pwd_flag,kseb_flag=kseb_flag,ksrtc_flag=ksrtc_flag,env_flag =env_flag,water_dept=water_dept,pwd_dept=pwd_dept,kseb_dept=kseb_dept,ksrtc_dept=ksrtc_dept,env_dept=env_dept)
     else:
         return redirect(url_for('log') )
 

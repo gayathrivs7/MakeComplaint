@@ -226,7 +226,11 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print("\n\n Similarity string \n \n ")
     print(similarity_string)
     
-
+    water_dept=[]
+    pwd_dept=[]
+    kseb_dept=[]
+    ksrtc_dept=[]
+    env_dept=[]
 
 
     if env_length ==0 :
@@ -259,12 +263,43 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
                         print("\n New mapped word "+new_mapped_word)
                         if new_mapped_word in water_list:
                             print("Predicted class : "+depart_dict[1])
+                            water_dept.append(depart_dict[1])
                         if new_mapped_word in pwd_list:
                             print("Predicted class : "+depart_dict[2])
+                            pwd_dept.append(depart_dict[2])
                         if new_mapped_word in kseb_list:
                             print("Predicted class : "+depart_dict[3])
+                            kseb_dept.append(depart_dict[3])
                         if new_mapped_word in ksrtc_list:
                             print("Predicted class : "+depart_dict[4])
+                            ksrtc_dept.append(depart_dict[4])
                         if new_mapped_word in env_list:
                             print("Predicted class : "+depart_dict[5])
+                            env_dept.append(depart_dict[5])
+    water_len = len(water_dept)
+    if water_len == 1:
+        water_flag =1
+    else:
+        water_flag = 0  
 
+    if len(pwd_dept)==1:
+        pwd_flag= 1
+    else:
+        pwd_flag= 0
+    if len(kseb_dept)==1:
+        kseb_flag = 1
+    else:
+        kseb_flag = 0
+    if len(ksrtc_dept)== 1:
+        ksrtc_flag = 1
+    else:
+        ksrtc_flag = 0
+    if len(env_dept)==1:
+        env_flag = 1
+    else:
+        env_flag = 0
+
+    print(water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept)
+    print(water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag)
+    return water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept
+    
