@@ -164,7 +164,8 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     if index == 3:
         print("Predicted class : KSEB")
 
-     if index == 4:
+    if index == 4:
+        
         print("Predicted class : KSRTC")
     department = dept
     dept_values =[1,2,3,4,5]
