@@ -152,8 +152,20 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print(prob_list)
     max_prob = max(prob_list)
     index = prob_list.index(max_prob)
-    print ("Index"+index)
+    print ("Index",index)
 
+    if index == 0:
+        print("Predicted class : PWD ")
+    if index == 1:
+        print("Predicted class : Water Authority")
+    if index == 2:
+        print("Predicted class : Environment and climate change")
+
+    if index == 3:
+        print("Predicted class : KSEB")
+
+     if index == 4:
+        print("Predicted class : KSRTC")
     department = dept
     dept_values =[1,2,3,4,5]
     depart_dict = dict(zip(dept_values,department))
