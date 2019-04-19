@@ -152,7 +152,11 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print(prob_list)
     max_prob = max(prob_list)
     index = prob_list.index(max_prob)
-    print ("Index",index)
+    indices = [index for index, value in enumerate(prob_list) if value == max_prob]
+    print ("Index",indices)
+
+  
+
 
     if index == 0:
         print("Predicted class : PWD ")
@@ -165,7 +169,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         print("Predicted class : KSEB")
 
     if index == 4:
-        
+
         print("Predicted class : KSRTC")
     department = dept
     dept_values =[1,2,3,4,5]
