@@ -145,7 +145,15 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     count_list.append(ksrtc_count)
     print("Count list")
     print(count_list)
-    
+    for i in count_list:
+        prob = i/5
+        prob_list.append(prob)
+    print("\n Probablity list  Predict fn ")
+    print(prob_list)
+    max_prob = max(prob_list)
+    index = prob_list.index(max_prob)
+    print ("Index"+index)
+
     department = dept
     dept_values =[1,2,3,4,5]
     depart_dict = dict(zip(dept_values,department))
