@@ -48,15 +48,22 @@ def take():
     mess =  request.args.get('message')
     message  = subject + " "+ mess
     keywords,item=testdata.test(message)
-    water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept = predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
+    water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept,flag_env,flag_kseb,flag_ksrtc,flag_pwd,flag_water= predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
     name= water_dept+pwd_dept+kseb_dept+ksrtc_dept+env_dept
     name = ['Water Authority','PWD',  'KSEB',  'KSRTC','Environment and climate change']
-    flags= [0,1,2,3,4]
-    flags[0]= water_flag
-    flags[1]=pwd_flag
-    flags[2] =kseb_flag
+    flags= [0,1,2,3,4,5,6,7,8,9]
+    flags[0]  = water_flag
+    flags[1]  = pwd_flag
+    flags[2]  = kseb_flag
     flags[3]  = ksrtc_flag
-    flags[4]= env_flag
+    flags[4]  = env_flag
+    flags[5]  = flag_env
+    flags[6]  = flag_kseb
+    flags[7]  = flag_ksrtc
+    flags[8]  = flag_pwd
+    flags[9]  = flag_water
+    
+
 
     
     if subject and message:

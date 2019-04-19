@@ -150,40 +150,73 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     ksrtc_length = len(ksrtc_predict)
     
     #================================================================= class mapping
-    
+
     if len(env_predict)==0:
         pass
     else:
         predict_dict.update({'Environment and Climate change':len(env_predict)})
         
         print(" \n\n Predicted class : " +depart_dict[5])
+        flag_env =1
         
     
     if len(water_predict)==0:
         pass
     else:
-        predict_dict.update({'Water Authority':len(env_predict)})
+        predict_dict.update({'Water Authority':len(water_predict)})
         print(" \n\n Predicted class : " + depart_dict[1])
+        
         
     if len(pwd_predict)==0:
         pass
     else:
-        predict_dict.update({'PWD':len(env_predict)})
+        predict_dict.update({'PWD':len(pwd_predict)})
         print(" \n\n Predicted class : " + depart_dict[2])
+        
         
     if len(kseb_predict)==0:
         pass
     else:
-        predict_dict.update({'KSEB':len(env_predict)})
+        predict_dict.update({'KSEB':len(kseb_predict)})
         print(" \n\n Predicted class : " + depart_dict[3])
+        
         
     if len(ksrtc_predict)==0:
         pass
     else:
-        predict_dict.update({'KSRTC':len(env_predict)})
+        predict_dict.update({'KSRTC':len(ksrtc_predict)})
         print(" \n\n Predicted class : " + depart_dict[4])
+        
+            
 
     print(predict_dict)
+
+    if len(env_predict)==0:
+        flag_env = 0
+    else:
+        flag_env = 1
+    
+    if len(kseb_predict)==0:
+        flag_kseb = 0
+    else:
+        flag_kseb = 1
+
+    
+    if len(ksrtc_predict)==0:
+        flag_ksrtc = 0
+    else:
+        flag_ksrtc = 1
+    
+    if len(pwd_predict)==0:
+        flag_pwd = 0
+    else:
+        flag_pwd = 1
+    
+    
+    if len(water_predict) == 0:
+        flag_water = 0
+    else:
+        flag_water = 1
     
     #===========================================================Converting to string
     
@@ -301,5 +334,5 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
 
     print(water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept)
     print(water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag)
-    return water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept
+    return water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept,flag_env,flag_kseb,flag_ksrtc,flag_pwd,flag_water
     
