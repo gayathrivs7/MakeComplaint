@@ -159,19 +159,19 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     for i in indices:
 
 
-        if index == 0:
-            print("Predicted class : PWD ")
-        if index == 1:
-            print("Predicted class : Water Authority")
-        if index == 2:
-            print("Predicted class : Environment and climate change")
+        if i == 0:
+            print("Predicted class prob : PWD ")
+        if i == 1:
+            print("Predicted class prob : Water Authority")
+        if i == 2:
+            print("Predicted class prob : Environment and climate change")
 
-        if index == 3:
-            print("Predicted class : KSEB")
+        if i == 3:
+            print("Predicted class prob : KSEB")
 
-        if index == 4:
+        if i == 4:
 
-            print("Predicted class : KSRTC")
+            print("Predicted class prob : KSRTC")
     department = dept
     dept_values =[1,2,3,4,5]
     depart_dict = dict(zip(dept_values,department))
