@@ -4,11 +4,20 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from nltk.stem.snowball import SnowballStemmer
+from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
+
 
 def test(text_data):
     
     text_data= text_data.replace('[^\w\s]','').lower()
+    porter=PorterStemmer()
+    stemmer = SnowballStemmer("english")
+    lemmatizer = WordNetLemmatizer()
     
+
     
     punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
 
@@ -32,6 +41,24 @@ def test(text_data):
     
             test_list.append(i)
     print(test_list)
+
+    #stemming and lemmatization 
+    test_stem = []
+    for i in test_list:
+        t = stemmer.stem(i)
+        test_stem.append(t)
+
+    test_lemm = []
+    for i in test_list:
+        t = lemmatizer.lemmatize(i)
+        test_lemm.append(t)
+    
+    test_list = test_lemm
+
+
+
+
+
     
     #frequency : 
     
