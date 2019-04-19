@@ -72,6 +72,12 @@ def test(text_data):
     items.sort()
     items.reverse() 
     item = [(k,v) for v, k in items]
+    count_list = [v for v,k in items]
+
+    print("Count list ")
+    print(count_list)
+    count_list = count_list[:6]
+    print(count_list)
     items = [k for v, k in items]
     print(items)  # sorted high to low
     test_dict=(items[0:5])
