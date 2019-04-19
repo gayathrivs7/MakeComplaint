@@ -5,7 +5,9 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     #keyword matching 
     #water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis
     
-    
+    count_list = []
+    prob_list  = []
+
     print("frequent list.................")
         
     print(item)
@@ -18,7 +20,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     #pwd predict
     pwd_predict=[]
     pwd_list = []
-    count=0
+    pwd_count=0
     for li in pwd_lis:
         for i in li:
             
@@ -27,23 +29,24 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         
         if i in keywords:
             if i in pwd_list:
-                count+=1
+                pwd_count+=1
                 pwd_predict.append(i)
+
     #keywords = set(keywords)
     #pwd_list = set(pwd_list)
     #pwd_predict = keywords & pwd_list
     #pwd_predict = list(pwd_predict)
                         
     print("\n\n PWD predict \n\n")
-    print(count)
+    print(pwd_count)
     print(pwd_predict)
     print(pwd_list)
-    
+    count_list.append(pwd_count)
     #water predict
     #==================================================Water
     water_predict=[]
     water_list = []
-    count = 0
+    water_count = 0
     
     for li in water_lis:
         for i in li:
@@ -54,20 +57,20 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         
         if i in keywords:
             if i in water_list:
-                count+=1
+                water_count+=1
                 water_predict.append(i)
 
                         
     print("\n\n WATER predict \n\n")  
-    print(count)
+    print(water_count)
     print(water_predict)
     print(water_list)
-    
+    count_list.append(water_count)
     #env predict
     #=======================================================ENV
     env_predict=[]
     env_list = []
-    count =0
+    env_count = 0
     #making it as 1 d list
     for li in env_lis:
         for i in li:
@@ -78,23 +81,24 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         
         if i in keywords:
             if i in env_list:
-                count+=1
+                env_count+=1
                 env_predict.append(i)
 
             
     
                         
     print("\n\n ENV predict \n\n") 
-    print(count)
+    print(env_count)
     print(env_predict)
     print(env_list)
+    count_list.append(env_count)
     
     #kseb predict
     #=========================================================KSEB
     
     kseb_predict=[]
     kseb_list = []
-    count = 0
+    kseb_count = 0
     
     for li in kseb_lis:
         for i in li:
@@ -105,20 +109,22 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         
         if i in keywords:
             if i in kseb_list:
-                count+=1
+                kseb_count+=1
                 kseb_predict.append(i)
 
                         
     print("\n\n kseb predict \n\n")    
     print(kseb_predict)
     print(kseb_list)
+    print(kseb_count)
+    count_list.append(kseb_count)
     
     #ksrtc predict
     #=============================================================KSRTC
     
     ksrtc_predict=[]
     ksrtc_list = []
-    count = 0
+    ksrtc_count = 0
     
     for li in ksrtc_lis:
         for i in li:
@@ -128,14 +134,17 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         
         if i in keywords:
             if i in ksrtc_list:
-                count+=1
+                ksrtc_count+=1
                 ksrtc_predict.append(i)
 
                         
     print("\n\n ksrtc predict \n\n") 
-    print(count)
+    print(ksrtc_count)
     print(ksrtc_predict)
     print(ksrtc_list)
+    count_list.append(ksrtc_count)
+    print("Count list")
+    print(count_list)
     
     department = dept
     dept_values =[1,2,3,4,5]

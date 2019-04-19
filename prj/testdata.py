@@ -76,8 +76,16 @@ def test(text_data):
 
     print("Count list ")
     print(count_list)
-    count_list = count_list[:6]
+    count_list = count_list[:5]
+
     print(count_list)
+    prob_list = []
+    for i in count_list:
+        prob = i/5
+        prob_list.append(prob)
+    print("\n \n Probability list")
+    print(prob_list)
+
     items = [k for v, k in items]
     print(items)  # sorted high to low
     test_dict=(items[0:5])
