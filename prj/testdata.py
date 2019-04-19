@@ -49,7 +49,7 @@ def test(text_data):
         test_stem.append(t)
 
     test_lemm = []
-    for i in test_list:
+    for i in test_stem:
         t = lemmatizer.lemmatize(i)
         test_lemm.append(t)
     
