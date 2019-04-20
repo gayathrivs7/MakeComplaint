@@ -143,6 +143,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print(ksrtc_predict)
     print(ksrtc_list)
     count_list.append(ksrtc_count)
+
     print("Count list")
     print(count_list)
     for i in count_list:
@@ -155,27 +156,38 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     indices = [index for index, value in enumerate(prob_list) if value == max_prob]
     print ("Index",indices)
 
+
+    department = dept
+    dept_values =[1,2,3,4,5]
+    depart_dict = dict(zip(dept_values,department))
+    print(depart_dict)
+    predict_class_prob = []
   
     for i in indices:
 
 
         if i == 0:
             print("Predicted class prob : PWD ")
+            predict_class_prob.append(depart_dict[2])
+
         if i == 1:
             print("Predicted class prob : Water Authority")
+            predict_class_prob.append(depart_dict[1])
         if i == 2:
             print("Predicted class prob : Environment and climate change")
+            predict_class_prob.append(depart_dict[5])
 
         if i == 3:
             print("Predicted class prob : KSEB")
+            predict_class_prob.append(depart_dict[3])
 
         if i == 4:
 
             print("Predicted class prob : KSRTC")
-    department = dept
-    dept_values =[1,2,3,4,5]
-    depart_dict = dict(zip(dept_values,department))
-    print(depart_dict)
+            predict_class_prob.append(depart_dict[4])
+
+
+    
     
     predict_dict={}
     env_length = len(env_predict)
@@ -185,13 +197,15 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     ksrtc_length = len(ksrtc_predict)
     
     #================================================================= class mapping
-
+    predict_class_normal= [ ]
     if len(env_predict)==0:
         pass
     else:
         predict_dict.update({'Environment and Climate change':len(env_predict)})
         
         print(" \n\n Predicted class : " +depart_dict[5])
+        predict_class_normal.append(depart_dict[5])
+        
         flag_env =1
         
     
@@ -200,6 +214,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     else:
         predict_dict.update({'Water Authority':len(water_predict)})
         print(" \n\n Predicted class : " + depart_dict[1])
+        predict_class_normal.append(depart_dict[1])
         
         
     if len(pwd_predict)==0:
@@ -207,6 +222,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     else:
         predict_dict.update({'PWD':len(pwd_predict)})
         print(" \n\n Predicted class : " + depart_dict[2])
+        predict_class_normal.append(depart_dict[2])
         
         
     if len(kseb_predict)==0:
@@ -214,6 +230,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     else:
         predict_dict.update({'KSEB':len(kseb_predict)})
         print(" \n\n Predicted class : " + depart_dict[3])
+        predict_class_normal.append(depart_dict[3])
         
         
     if len(ksrtc_predict)==0:
@@ -221,8 +238,15 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     else:
         predict_dict.update({'KSRTC':len(ksrtc_predict)})
         print(" \n\n Predicted class : " + depart_dict[4])
+        predict_class_normal.append(depart_dict[4])
         
             
+    print("\n\n Predict class normal")
+    print(predict_class_normal)
+    predict_class_normal = set(predict_class_normal)
+    predict_class_prob = set(predict_class_prob)
+    final_class = predict_class_normal & predict_class_prob
+    print("Final class", final_class)
 
     print(predict_dict)
 
