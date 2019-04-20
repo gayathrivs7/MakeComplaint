@@ -8,7 +8,6 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from nltk.stem import WordNetLemmatizer
 from nltk.stem import PorterStemmer
 import spacy
-from collections import Counter
 from nltk.stem import WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
 
@@ -367,13 +366,7 @@ class Main:
                 ksrtc_inner.append(lm)
             ksrtc_lemm.append(ksrtc_inner)
         print(ksrtc_lemm)
-
-
-      
-        
-
-
-        
+  
         
             
         return(water_lemm,pwd_lemm,ksrtc_list,kseb_lemm,env_lemm)
@@ -407,8 +400,6 @@ class Main:
         print("\n\n KSEB Count \n\n")
         print(kseb_count)
     
-
-        
         #word frequencies  KSRTC department
 
         wordfreq = []
@@ -1054,28 +1045,6 @@ class Main:
 
 
 
-
-
-
-                            
-                                    
-        
-                            
-                            
-
-
-
-                            
-
-
-                            
-                        
-                            
-                            
-                            
-                            
-                            
-        
   
             
         

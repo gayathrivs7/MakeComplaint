@@ -5,6 +5,26 @@
     <body>
               
             <h2>{{message}}</h2>
+
+            {% if water_flag == 1 %}
+            <h2> Predicted class : {{water_dept}}</h2>
+            {%endif%}
+
+            {%if  pwd_flag == 1 %}
+            <h2> Predicted class : {{pwd_dept}}</h2>
+            {%endif%}
+              
+            {%if  kseb_flag ==1%}
+            <h2> Predicted class : {{kseb_dept}}</h2>
+            {%endif%}
+
+            {%if  ksrtc_flag ==1%}
+            <h2> Predicted class : {{ksrtc_dept}}</h2>
+            {%endif%}
+            
+            {%if env_flag == 1%}
+            <h2> Predicted class : {{env_dept}}</h2>
+            {%endif%}
     
     </body>
 </html>
