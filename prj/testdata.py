@@ -83,8 +83,8 @@ def test(text_data):
     for i in count_list:
         prob = i/5
         prob_list.append(prob)
-    print("\n \n Probability list")
-    print(prob_list)
+    #print("\n \n Probability list")
+    #print(prob_list)
 
     items = [k for v, k in items]
     print(items)  # sorted high to low

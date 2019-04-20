@@ -40,6 +40,8 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print("\n\n PWD predict \n\n")
     print(pwd_count)
     print(pwd_predict)
+    pwd_list.append("pwd")
+    pwd_list.append("public works department")
     print(pwd_list)
     count_list.append(pwd_count)
     #water predict
@@ -65,6 +67,8 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print(water_count)
     print(water_predict)
     print(water_list)
+    pwd_list.append("water authority")
+    pwd_list.append("water bill")
     count_list.append(water_count)
     #env predict
     #=======================================================ENV
@@ -91,6 +95,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print(env_count)
     print(env_predict)
     print(env_list)
+    env_list.append("environment and climate change")
     count_list.append(env_count)
     
     #kseb predict
@@ -115,7 +120,11 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
                         
     print("\n\n kseb predict \n\n")    
     print(kseb_predict)
+    kseb_list.append('kseb')
+    kseb_list.append("kerala state electricity board")
+    kseb_list.append("electricity bill")
     print(kseb_list)
+    
     print(kseb_count)
     count_list.append(kseb_count)
     
@@ -305,11 +314,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print("Joining Water keywords  " + water_string)
     print("Joining ENV keywords  " + env_string)
     
-    #======================================================================
-
-
-
-    
+    #======================================================================   
     
     #sorting in desecnding order
     counts = Counter(predict_dict)
