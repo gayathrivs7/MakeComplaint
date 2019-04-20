@@ -299,7 +299,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     pwd_string    = ' '.join(pwd_list)
     env_string    = ' '.join(env_list)
     
-    print("Joining keywords  " + keywords_string)
+    print("\n\n\nJoining keywords  " + keywords_string)
     print("Joining KSRTC keywords  " + ksrtc_string)
     print("Joining KSEB keywords  " + kseb_string)
     print("Joining Water keywords  " + water_string)
