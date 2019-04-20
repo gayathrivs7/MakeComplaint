@@ -146,11 +146,21 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
 
     print("Count list")
     print(count_list)
+
     for i in count_list:
         prob = i/5
         prob_list.append(prob)
-    print("\n Probablity list  Predict fn ")
+    print("\n Probablity list  Predict fn\n ")
     print(prob_list)
+
+    
+    print( "PWD" ,prob_list[1])
+    print("Water",prob_list[1])
+    print("Env",prob_list[2])
+    print("KSEB",prob_list[3])
+    print("KSRTC",prob_list[4])
+
+
     max_prob = max(prob_list)
     index = prob_list.index(max_prob)
     indices = [index for index, value in enumerate(prob_list) if value == max_prob]
