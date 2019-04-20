@@ -259,7 +259,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     final_class = predict_class_normal & predict_class_prob
     print("\n\n Predicted through set intersection  : ", final_class)
 
-    print(predict_dict)
+   # print(predict_dict)
 
     if len(env_predict)==0:
         flag_env = 0
