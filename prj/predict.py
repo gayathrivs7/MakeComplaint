@@ -214,7 +214,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     else:
         predict_dict.update({'Environment and Climate change':len(env_predict)})
         
-        print(" \n Predicted class : \n " +depart_dict[5])
+        print(" \n Predicted class :  " +depart_dict[5])
         predict_class_normal.append(depart_dict[5])
         
         flag_env =1
@@ -224,7 +224,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         pass
     else:
         predict_dict.update({'Water Authority':len(water_predict)})
-        print(" \nPredicted class : \n" + depart_dict[1])
+        print(" \nPredicted class : " + depart_dict[1])
         predict_class_normal.append(depart_dict[1])
         
         
@@ -232,7 +232,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         pass
     else:
         predict_dict.update({'PWD':len(pwd_predict)})
-        print(" \n Predicted class : \n" + depart_dict[2])
+        print(" \n Predicted class : " + depart_dict[2])
         predict_class_normal.append(depart_dict[2])
         
         
@@ -240,7 +240,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         pass
     else:
         predict_dict.update({'KSEB':len(kseb_predict)})
-        print(" \nPredicted class : \n" + depart_dict[3])
+        print(" \nPredicted class : " + depart_dict[3])
         predict_class_normal.append(depart_dict[3])
         
         
@@ -248,16 +248,16 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
         pass
     else:
         predict_dict.update({'KSRTC':len(ksrtc_predict)})
-        print(" \n Predicted class : \n" + depart_dict[4])
+        print(" \n Predicted class : " + depart_dict[4])
         predict_class_normal.append(depart_dict[4])
         
             
-    print("\n Predict class normal\n")
-    print(predict_class_normal)
+    #print("\n Predict class normal\n")
+    #print(predict_class_normal)
     predict_class_normal = set(predict_class_normal)
     predict_class_prob = set(predict_class_prob)
     final_class = predict_class_normal & predict_class_prob
-    print("\n Final class \n", final_class)
+    print("\n\n Predicted through set intersection  : ", final_class)
 
     print(predict_dict)
 
