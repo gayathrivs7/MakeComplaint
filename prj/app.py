@@ -15,6 +15,7 @@ import topwords
 from topwords import most_repeated_keywords
 import predict
 from predict import evaluate
+from flask_bootstrap import Bootstrap
 
 
 file =   '/home/gayathri/project/MakeComplaint/data.csv'   
@@ -23,6 +24,7 @@ c = Complaint(file,nlp)
 
 
 app = Flask(__name__)
+Bootstrap(app)
 
 @app.route('/')
 def log():
