@@ -26,6 +26,8 @@ c = Complaint(file,nlp)
 app = Flask(__name__)
 Bootstrap(app)
 
+
+
 @app.route('/')
 def log():
     return render_template('login.html')
@@ -75,7 +77,13 @@ def take():
     else:
         return redirect(url_for('log') )
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
+@app.route('/enter')
+def enter ():
+    return render_template('log.html')
 
 if __name__ == '__main__':
     app.run()
