@@ -6,22 +6,39 @@ MakeComplaint-Login
 
 
 {%block scripts%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 {%endblock%}
 
 {%block styles%}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 {%endblock%}
 
 {%block metas%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {%endblock%}
 
 
 
 {%block content%}
-<h1>hello</h1>
+
 <div class = "container">
 
-<div class = "jumbatron">
+<div class = "jumbotron" style="height : 300px; width: 500px;margin-left: 260px;
+margin-top: 100px">
 
+<form action="validate">
+    <label for="user">Username</label>
+    <p> <input type =" text" name ="user" placeholder="username">
+    </p>
+    <label for="pas">Password</label>
+    <p><input type="password" name ="pas" placeholder="Password"></p>
+    <button class ="btn btn-dark" type="button" >Login </button>
+</form>
+
+       
 </div>
     
 </div>
