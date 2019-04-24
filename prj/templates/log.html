@@ -13,6 +13,7 @@ MakeComplaint-Login
 
 {%block styles%}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {%endblock%}
 
 {%block metas%}
@@ -26,16 +27,20 @@ MakeComplaint-Login
 
 <div class = "container">
 
-<div class = "jumbotron" style="height : 300px; width: 500px;margin-left: 260px;
-margin-top: 100px">
+<div class = "jumbotron" style="height : 300px; width: 400px;margin-left: 260px;
+margin-top: 100px;background-color:#555">
 
 <form action="validate">
-    <label for="user">Username</label>
-    <p> <input type =" text" name ="user" placeholder="username">
+
+    <p> <input type =" text" name ="user" placeholder=" Username" style="border-radius:35px;border-color:darkorange;">
     </p>
-    <label for="pas">Password</label>
-    <p><input type="password" name ="pas" placeholder="Password"></p>
-    <button class ="btn btn-dark" type="button" >Login </button>
+
+    <p><input type="password" name ="pas" placeholder=" Password" style="border-radius:35px;border-color: darkorange;"></p>
+    
+    
+    <button class ="btn btn-dark btlogin" type="button" style="border-radius:20px; background-color: darkorange;">Secure Login </button>
+    <button class ="btn btn-dark btlogin" type="button" style="border-radius:20px; background-color: darkorange;">Register </button>
+
 </form>
 
        
