@@ -67,3 +67,11 @@
   cursor: pointer;
   
 }
+.logdiv{
+  background-color:darkorange;
+  margin-top: 50px
+
+}
+.logbody{
+  background-color: #555;
+}
