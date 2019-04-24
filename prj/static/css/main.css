@@ -75,3 +75,17 @@
 .logbody{
   background-color: #555;
 }
+.logbuttona{
+  color: white;
+  text-decoration: none;
+
+}
+.logbuttona:hover{
+  border-color: black;
+  color:black;
+}
+.logbuttona:visited{
+  color: white;
+  text-decoration: none;
+
+}
