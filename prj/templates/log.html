@@ -9,11 +9,15 @@ MakeComplaint-Login
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 {%endblock%}
 
 {%block styles%}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 {%endblock%}
 
 {%block metas%}
@@ -31,15 +35,22 @@ MakeComplaint-Login
 margin-top: 100px;background-color:#555">
 
 <form action="validate">
+        <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
-    <p> <input type =" text" name ="user" placeholder=" Username" style="border-radius:35px;border-color:darkorange;">
-    </p>
+    <p> <input type =" text" name ="user"   class="form-control" placeholder=" Username" style="border-color:darkorange;">
+    
+    </div>
+</p>
 
-    <p><input type="password" name ="pas" placeholder=" Password" style="border-radius:35px;border-color: darkorange;"></p>
-    
-    
-    <button class ="btn btn-dark btlogin" type="button" style="border-radius:20px; background-color: darkorange;">Secure Login </button>
-    <button class ="btn btn-dark btlogin" type="button" style="border-radius:20px; background-color: darkorange;">Register </button>
+<div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <p><input type="password" name ="pas"  class="form-control" placeholder=" Password" style="border-color: darkorange;"></p>
+</p>
+   </div> 
+</br>
+    <button class ="btn btn-dark btlogin btn-md" type="button" style=" background-color: darkorange;">Secure Login </button>
+    <button class ="btn btn-dark btlogin btn-md" type="button" style=" background-color: darkorange;">Register </button>
 
 </form>
 
