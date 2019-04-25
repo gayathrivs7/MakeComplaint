@@ -1,7 +1,9 @@
-from db import d,Puppy
+from dbfile import Puppy, db
+import sqlalchemy
+
 
 #creates all the tables model
-d.create_all()
+db.create_all()
 
 sam   = Puppy('Sammy',3)
 frank = Puppy('Frankie',4)
@@ -9,8 +11,10 @@ frank = Puppy('Frankie',4)
 print(sam.id)
 print(frank.id)
 
-d.session.add_all([sam,frank])
-d.session.commit()
+db.session.add(sam)
+
+db.session.add(frank)
+db.session.commit()
 
 print(sam.id)
 print(frank.id)
