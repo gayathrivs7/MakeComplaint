@@ -31,6 +31,9 @@ class Users(db.Model):
          self.email     = email
          self.password  = password
 
+    def __repr__(self):
+        return "{} {} {} {} {}".format(self.id,self.name,self.username,self.email,self.password)
+
 
 
 
