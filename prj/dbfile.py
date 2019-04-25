@@ -14,5 +14,25 @@ db = SQLAlchemy(app)
 
 Migrate(app,db)
 
+class Users(db.Model):
+     __tablename__ = 'User'  #table name
+
+     #creating columns 
+     id          = db.Column(db.Integer,primary_key = True)
+     name        = db.Column(db.Text)
+     username    = db.Column(db.Text, unique=True)
+     email       = db.Column(db.Text,unique =True)
+     password    = db.Column(db.Text)
+
+     def __init__(self,id,name,username,email,password):
+         self.id        = id
+         self.name      = name
+         self.username  = username
+         self.email     = email
+         self.password  = password
+
+
+
+
 
 
