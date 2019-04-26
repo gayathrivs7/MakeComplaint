@@ -376,22 +376,26 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
                         new_mapped_word = lemmatizer.lemmatize(t)
 
 
-                        
+                        print("============================================")
+                        print("\n -----Predictions through Similarity------")
+
                         if new_mapped_word in water_list:
-                            print("Predicted class : "+depart_dict[1])
+                            print("\nPredicted class : "+depart_dict[1])
                             water_dept.append(depart_dict[1])
                         if new_mapped_word in pwd_list:
-                            print("Predicted class : "+depart_dict[2])
+                            print("\nPredicted class : "+depart_dict[2])
                             pwd_dept.append(depart_dict[2])
                         if new_mapped_word in kseb_list:
-                            print("Predicted class : "+depart_dict[3])
+                            print("\nPredicted class : "+depart_dict[3])
                             kseb_dept.append(depart_dict[3])
                         if new_mapped_word in ksrtc_list:
-                            print("Predicted class : "+depart_dict[4])
+                            print("\nPredicted class : "+depart_dict[4])
                             ksrtc_dept.append(depart_dict[4])
                         if new_mapped_word in env_list:
-                            print("Predicted class : "+depart_dict[5])
+                            print("\nPredicted class : "+depart_dict[5])
                             env_dept.append(depart_dict[5])
+                        print("\n============================================")
+
     water_len = len(water_dept)
     if water_len == 1:
         water_flag =1
