@@ -26,11 +26,11 @@ def test(text_data):
             text_data = text_data.replace(x, " ") 
 
 
-    print(text_data) 
+    #print(text_data) 
     
         
     test_token = word_tokenize(text_data)
-    print(test_token)
+    #print(test_token)
     test_list =[]
     
     stop_words = set(stopwords.words('english'))
@@ -40,7 +40,7 @@ def test(text_data):
         if i not in stop_words:
     
             test_list.append(i)
-    print(test_list)
+    #print(test_list)
 
     #stemming and lemmatization 
     test_stem = []
@@ -66,7 +66,7 @@ def test(text_data):
     
     counts = Counter(test_list)
     count = dict(counts)
-    print(count)  # word frequency
+    #print(count)  # word frequency
 
     items = [(v, k) for k, v in counts.items()]
     items.sort()
@@ -74,11 +74,11 @@ def test(text_data):
     item = [(k,v) for v, k in items]
     count_list = [v for v,k in items]
 
-    print("Count list ")
-    print(count_list)
+    #print("Count list ")
+    #print(count_list)
     count_list = count_list[:5]
 
-    print(count_list)
+    #print(count_list)
     prob_list = []
     for i in count_list:
         prob = i/5
@@ -87,8 +87,8 @@ def test(text_data):
     #print(prob_list)
 
     items = [k for v, k in items]
-    print(items)  # sorted high to low
+    #print(items)  # sorted high to low
     test_dict=(items[0:5])
-    print(test_dict)  #key only
+    #print(test_dict)  #key only
     
     return(test_dict,item)

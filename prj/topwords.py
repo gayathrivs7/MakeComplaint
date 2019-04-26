@@ -5,8 +5,8 @@ from nltk.tokenize import word_tokenize
 
 def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq,status ):
     if status == 'manual':      
-        print("\n\n Water Freq newwwwwwwwww")
-        print(water_freq)
+        #print("\n\n Water Freq newwwwwwwwww")
+        #print(water_freq)
         #=================================================   Water 
         water_lis =[]
         
@@ -15,16 +15,16 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         items.sort()
         items.reverse()
         items = [k for v, k in items]
-        print(items)
+        #print(items)
 
         water_dict=(items[:5])
         water_lis.append(water_dict)            
-        print("\n\nKEYWORDS  WATER\n\n")
-        print(water_lis) 
+        #print("\n\nKEYWORDS  WATER\n\n")
+        #print(water_lis) 
         
         #==================================================  PWd       
-        print("\n\n PWD Freq newwwwwwwwww")
-        print(pwd_freq)
+        #print("\n\n PWD Freq newwwwwwwwww")
+        #print(pwd_freq)
         
         pwd_lis =[]
         
@@ -33,18 +33,18 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         items.sort()
         items.reverse()
         items = [k for v, k in items]
-        print(items)
+        #print(items)
 
         pwd_dict=(items[:5])
         pwd_lis.append(pwd_dict)
 
-        print("\n\nKEYWORDS  PWD\n\n")
-        print(pwd_lis)
+        #print("\n\nKEYWORDS  PWD\n\n")
+        #print(pwd_lis)
         
         
         #===================================================  KSEB
-        print("\n\n KSEB Freq newwwwwwwwww")
-        print(kseb_freq)
+        #print("\n\n KSEB Freq newwwwwwwwww")
+        #print(kseb_freq)
         
         
         kseb_lis =[]   
@@ -52,23 +52,23 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         items.sort()
         items.reverse()
         items = [k for v, k in items]
-        print(items)
+        #print(items)
 
 
 
         kseb_dict=(items[:5])
         kseb_lis.append(kseb_dict)
 
-        print("\n\nKEYWORDS  KSEB\n\n")
-        print(kseb_lis)
+        #print("\n\nKEYWORDS  KSEB\n\n")
+        #print(kseb_lis)
         
         
 
         
         # ========================================================= KSRTC
 
-        print("\n\n KSRTC Freq newwwwwwwwww")
-        print(ksrtc_freq)
+        #print("\n\n KSRTC Freq newwwwwwwwww")
+        #print(ksrtc_freq)
         
         
         ksrtc_lis =[]
@@ -79,22 +79,22 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         items.reverse()
         items = [k for v, k in items]
         
-        print(items)
+        #print(items)
 
 
 
         ksrtc_dict=(items[:5])
         ksrtc_lis.append(ksrtc_dict)
 
-        print("\n\nKEYWORDS  KSRTC\n\n")
-        print(ksrtc_lis)
+        #print("\n\nKEYWORDS  KSRTC\n\n")
+        #print(ksrtc_lis)
     
     
 
     
         # ===================================================== ENV
-        print("\n\n ENV Freq newwwwwwwwww")
-        print(env_freq)
+        #print("\n\n ENV Freq newwwwwwwwww")
+        #print(env_freq)
         
         
         env_lis =[]
@@ -104,15 +104,15 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         items.sort()
         items.reverse()
         items = [k  for v, k in items]
-        print(items)
+        #print(items)
 
 
 
         env_dict=(items[:5])
         env_lis.append(env_dict)
 
-        print("\n\nKEYWORDS  ENV \n\n")
-        print(env_lis)
+        #print("\n\nKEYWORDS  ENV \n\n")
+        #print(env_lis)
         
     
     
@@ -128,7 +128,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         
         stopwords = list(STOP_WORDS)
         
-        print("\n\nKEYWORD : LIB : ENV\n\n")
+        #print("\n\nKEYWORD : LIB : ENV\n\n")
         #print(dfenv)
         
         for i, row in dfenv.iterrows():
@@ -146,7 +146,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
             env_summary.append(keywords(str1).split('\n'))
                
         #print(type(env_token[0][0]))
-        print(env_summary)
+        #print(env_summary)
         
         # water Keyword
         
@@ -155,7 +155,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         
         stopwords = list(STOP_WORDS)
         
-        print("\n\nKEYWORD : LIB : Water\n\n")
+        #print("\n\nKEYWORD : LIB : Water\n\n")
         
         
         for i, row in dfwater.iterrows():
@@ -173,7 +173,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
             water_summary.append(keywords(str1).split('\n'))
                
         #print(type(env_token[0][0]))
-        print(water_summary)
+        #print(water_summary)
         
         
         #pwd keyword
@@ -183,7 +183,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         
         stopwords = list(STOP_WORDS)
         
-        print("\n\nKEYWORD : LIB : PWD\n\n")
+        #print("\n\nKEYWORD : LIB : PWD\n\n")
         #print(dfenv)
         
         for i, row in dfpwd.iterrows():
@@ -201,7 +201,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
             pwd_summary.append(keywords(str1).split('\n'))
                
         #print(type(env_token[0][0]))
-        print(pwd_summary)
+        #print(pwd_summary)
         
         #env keyword
         
@@ -210,7 +210,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         
         stopwords = list(STOP_WORDS)
         
-        print("\n\nKEYWORD : LIB : KSRTC\n\n")
+        #print("\n\nKEYWORD : LIB : KSRTC\n\n")
         #print(dfenv)
         
         for i, row in dfksrtc.iterrows():
@@ -228,7 +228,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
             ksrtc_summary.append(keywords(str1).split('\n'))
                
         #print(type(env_token[0][0]))
-        print(ksrtc_summary)
+        #print(ksrtc_summary)
         
         #env keyword
         
@@ -237,7 +237,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
         
         stopwords = list(STOP_WORDS)
         
-        print("\n\nKEYWORD : LIB : KSEB\n\n")
+        #print("\n\nKEYWORD : LIB : KSEB\n\n")
         #print(dfkseb)
         
         for i, row in dfkseb.iterrows():
@@ -255,7 +255,7 @@ def most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_fre
             kseb_summary.append(keywords(str1).split('\n'))
                
         #print(type(env_token[0][0]))
-        print("\n KSEB summary \n")
-        print(kseb_summary)
+        #print("\n KSEB summary \n")
+        #print(kseb_summary)
         return(env_summary,water_summary,pwd_summary,ksrtc_summary,kseb_summary)
         

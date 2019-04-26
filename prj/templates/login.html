@@ -33,6 +33,7 @@
 	
 
 	{% block content %}
+</body>
 
 <div class ="container-fluid">
 	<div class ="row">
@@ -83,20 +84,25 @@
 						  </div>
 
 			</div>
-			
+	
 			<div class="col-sm-9">
-			
+			<form action="{{url_for('take')}}" method = "GET">	
+
+
 			<label for="subject"> Subject </label>
 
 			<p><textarea name="subject" id="" cols="50" rows="2"></textarea></p>
+
 			<label for = " message"> Message</label>			
 			<p><textarea name="message" id="" cols="50" rows="10"></textarea></p>
 			
 
-			<p> <Button type="button" class="btn btn-dark btn btn_outline-light">Submit</Button></p>
+			<p> <input type="submit" class="btn btn-dark btn btn_outline-light" value="submit"></p>
+		</form>
 		</div>
 		</div>
 		</div>
+	</body>
 		{% endblock %}
 
 	

@@ -23,6 +23,7 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
         #lemmatized_output = [i for i in lemmatizer.lemmatize(i) for i in result]
     
         water_list.append(result)
+    print("\n==================Tokenisation=================\n")
     print("\n\nWater Tokens\n\n")
     print(water_list)
 #water_token.append(tokenizer.tokenize(row['Subject_and_Complaint']))
@@ -38,8 +39,8 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
         result1 = [i for i in pwd_token if not i in stop_words]
         pwd_list.append(result1)
         
-    print("\n\nPWD Tokens\n\n")
-    print(pwd_list)
+    #print("\n\nPWD Tokens\n\n")
+    #print(pwd_list)
         
         #print( pwd_token)
 
@@ -89,7 +90,8 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
     env_stem = []
     
     # ps.stem(w)) 
-    print("\n\nfor Stemming \n\n")
+   
+    #print("\n\nfor Stemming \n\n")
     env_inner=[]
     for li in env_list:
         env_inner=[]
@@ -99,13 +101,15 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             env_inner.append(st)
         env_stem.append(env_inner)
-    print(env_stem)
+    #print("\n==================Stemming=================\n")
+    #print(env_stem)
     
     #lemma
     env_lemm = []
     
     # ps.stem(w)) 
-    print("\n\nfor Lemmatisation\n\n")
+    print("\n==================Stemming=================\n")
+    #print("\n\nfor Lemmatisation\n\n")
     env_inner=[]
     for li in env_stem:
         env_inner=[]
@@ -115,12 +119,13 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             env_inner.append(lm)
         env_lemm.append(env_inner)
-    print(env_lemm)
+    #print(env_lemm)
 #======================================================  water
     water_stem = []
     
     # ps.stem(w)) 
-    print("\n\nfor Stemming \n\n")
+    print("\n==================Stemming=================\n")
+ 
     water_inner=[]
     for li in water_list:
         water_inner=[]
@@ -136,7 +141,7 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
     water_lemm = []
     
     # ps.stem(w)) 
-    print("\n\nfor Lemmatisation\n\n")
+    #print("\n\nfor Lemmatisation\n\n")
     water_inner=[]
     for li in water_stem:
         water_inner=[]
@@ -146,12 +151,13 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             water_inner.append(lm)
         water_lemm.append(water_inner)
+    print("\n==================Lemmatisation=================\n")
     print(water_lemm)
     #======================================================  pwd
     pwd_stem = []
     
     # ps.stem(w)) 
-    print("\n\nfor Stemming \n\n")
+    #print("\n\nfor Stemming \n\n")
     pwd_inner=[]
     for li in pwd_list:
         pwd_inner=[]
@@ -161,13 +167,13 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             pwd_inner.append(st)
         pwd_stem.append(pwd_inner)
-    print(pwd_stem)
+    #print(pwd_stem)
     
     #lemma
     pwd_lemm = []
     
     # ps.stem(w)) 
-    print("\n\nfor Lemmatisation\n\n")
+    #print("\n\nfor Lemmatisation\n\n")
     pwd_inner=[]
     for li in pwd_stem:
         pwd_inner=[]
@@ -177,12 +183,12 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             pwd_inner.append(lm)
         pwd_lemm.append(pwd_inner)
-    print(pwd_lemm)
+    #print(pwd_lemm)
     #======================================================  kseb
     kseb_stem = []
     
     # ps.stem(w)) 
-    print("\n\nfor Stemming \n\n")
+    #print("\n\nfor Stemming \n\n")
     pwd_inner=[]
     for li in kseb_list:
         kseb_inner=[]
@@ -192,13 +198,13 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             kseb_inner.append(st)
         kseb_stem.append(kseb_inner)
-    print(kseb_stem)
+    #print(kseb_stem)
     
     #lemma
     kseb_lemm = []
     
     # ps.stem(w)) 
-    print("\n\nfor Lemmatisation\n\n")
+    #print("\n\nfor Lemmatisation\n\n")
     kseb_inner=[]
     for li in kseb_stem:
         kseb_inner=[]
@@ -208,12 +214,12 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             kseb_inner.append(lm)
         kseb_lemm.append(kseb_inner)
-    print(kseb_lemm)
+    #print(kseb_lemm)
         #======================================================  ksrtc
     ksrtc_stem = []
     
     # ps.stem(w)) 
-    print("\n\nfor Stemming \n\n")
+    #print("\n\nfor Stemming \n\n")
     ksrtc_inner=[]
     for li in ksrtc_list:
         ksrtc_inner=[]
@@ -223,13 +229,13 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             ksrtc_inner.append(st)
         ksrtc_stem.append(ksrtc_inner)
-    print(ksrtc_stem)
+    #print(ksrtc_stem)
     
     #lemma
     ksrtc_lemm = []
     
     # ps.stem(w)) 
-    print("\n\nfor Lemmatisation\n\n")
+    #print("\n\nfor Lemmatisation\n\n")
     ksrtc_inner=[]
     for li in ksrtc_stem:
         ksrtc_inner=[]
@@ -239,7 +245,7 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
             
             ksrtc_inner.append(lm)
         ksrtc_lemm.append(ksrtc_inner)
-    print(ksrtc_lemm)
+    #print(ksrtc_lemm)
         
     return(water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm)
     #return(water_list,pwd_list,ksrtc_list,kseb_list,env_list)

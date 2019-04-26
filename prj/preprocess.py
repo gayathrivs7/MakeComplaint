@@ -10,7 +10,7 @@ def data_clean(dataset):
     dataset['Subject'] =  dataset['Subject'] .str.replace('\d+', ' ')
     dataset['Complaint'] =  dataset['Complaint'] .str.replace('\d+', ' ')
     dataset['Subject'] =  dataset['Subject'].str.rstrip('\n')
-    print(dataset['Complaint'])
+    #print(dataset['Complaint'])
     return dataset
 
 

@@ -27,10 +27,13 @@ app = Flask(__name__)
 Bootstrap(app)
 
 
+@app.route('/login')
+def enter():
+    return render_template('login.html')
 
 @app.route('/')
 def log():
-    return render_template('login.html')
+    return render_template('log.html')
 
 @app.route('/success')
 def take():
@@ -51,6 +54,7 @@ def take():
     subject  =  request.args.get('subject')
     mess =  request.args.get('message')
     message  = subject + " "+ mess
+    
     keywords,item=testdata.test(message)
     water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept,flag_env,flag_kseb,flag_ksrtc,flag_pwd,flag_water= predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
     name= water_dept+pwd_dept+kseb_dept+ksrtc_dept+env_dept
@@ -81,9 +85,7 @@ def take():
 def register():
     return render_template('register.html')
 
-@app.route('/enter')
-def enter ():
-    return render_template('log.html')
+
 
 if __name__ == '__main__':
     app.run()
