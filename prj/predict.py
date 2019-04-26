@@ -1,5 +1,8 @@
 import spacy
 from collections import Counter
+from nltk.stem.snowball import SnowballStemmer
+from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
 
 def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp):
     #keyword matching 
@@ -8,7 +11,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     count_list = []
     prob_list  = []
 
-    print("frequent list.................")
+    print("\nfrequent list  -Test Data ")
         
     print(item)
     
@@ -40,8 +43,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print("\n\n PWD predict \n\n")
     print(pwd_count)
     print(pwd_predict)
-    pwd_list.append("pwd")
-    pwd_list.append("public works department")
+    
     print(pwd_list)
     count_list.append(pwd_count)
     #water predict
@@ -67,8 +69,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print(water_count)
     print(water_predict)
     print(water_list)
-    pwd_list.append("water authority")
-    pwd_list.append("water bill")
+    
     count_list.append(water_count)
     #env predict
     #=======================================================ENV
@@ -95,7 +96,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print(env_count)
     print(env_predict)
     print(env_list)
-    env_list.append("environment and climate change")
+   
     count_list.append(env_count)
     
     #kseb predict
@@ -120,9 +121,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
                         
     print("\n\n kseb predict \n\n")    
     print(kseb_predict)
-    kseb_list.append('kseb')
-    kseb_list.append("kerala state electricity board")
-    kseb_list.append("electricity bill")
+   
     print(kseb_list)
     
     print(kseb_count)
@@ -150,6 +149,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     print("\n\n ksrtc predict \n\n") 
     print(ksrtc_count)
     print(ksrtc_predict)
+    
     print(ksrtc_list)
     count_list.append(ksrtc_count)
 
@@ -302,6 +302,7 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
     
     
     keywords_string = ' '.join(keywords)
+
     ksrtc_string    = ' '.join(ksrtc_list)
     kseb_string    = ' '.join(kseb_list)
     water_string    = ' '.join(water_list)
@@ -369,6 +370,13 @@ def evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,dept,nlp
                                     #  print("\nThresh higher"+keyword.text,word.text)
 
                         print("\n New mapped word "+new_mapped_word)
+                        stemmer = SnowballStemmer("english")
+                        lemmatizer = WordNetLemmatizer()
+                        t = stemmer.stem(new_mapped_word)
+                        new_mapped_word = lemmatizer.lemmatize(t)
+
+
+                        
                         if new_mapped_word in water_list:
                             print("Predicted class : "+depart_dict[1])
                             water_dept.append(depart_dict[1])

@@ -56,7 +56,10 @@ def take():
     message  = subject + " "+ mess
     
     keywords,item=testdata.test(message)
+
+    
     water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept,flag_env,flag_kseb,flag_ksrtc,flag_pwd,flag_water= predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
+    
     name= water_dept+pwd_dept+kseb_dept+ksrtc_dept+env_dept
     name = ['Water Authority','PWD',  'KSEB',  'KSRTC','Environment and climate change']
     flags= [0,1,2,3,4,5,6,7,8,9]

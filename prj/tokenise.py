@@ -124,7 +124,7 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
     water_stem = []
     
     # ps.stem(w)) 
-    print("\n==================Stemming=================\n")
+    #print("\n==================Stemming=================\n")
  
     water_inner=[]
     for li in water_list:

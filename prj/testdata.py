@@ -41,19 +41,11 @@ def test(text_data):
     
             test_list.append(i)
     #print(test_list)
+    
 
     #stemming and lemmatization 
-    test_stem = []
-    for i in test_list:
-        t = stemmer.stem(i)
-        test_stem.append(t)
-
-    test_lemm = []
-    for i in test_stem:
-        t = lemmatizer.lemmatize(i)
-        test_lemm.append(t)
     
-    test_list = test_lemm
+    test_list
 
 
 
@@ -62,11 +54,13 @@ def test(text_data):
     
     #frequency : 
     
-
-    
+   
+    #with stem and lemma
     counts = Counter(test_list)
     count = dict(counts)
     #print(count)  # word frequency
+
+
 
     items = [(v, k) for k, v in counts.items()]
     items.sort()
