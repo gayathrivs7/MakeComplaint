@@ -2,7 +2,7 @@ from dbfile import db,Puppy
 
 #create
 
-my_puppy = Puppy('Rufus',5)
+my_puppy = Puppy('Rufus',5,"german shepard","black")
 db.session.add(my_puppy)
 db.session.commit()
 
@@ -40,3 +40,8 @@ all_puppies = Puppy.query.all()
 print("\n\nListing all Puppies aftr upadting value of first puppy\n")
 print(all_puppies)
 print("=========================================")
+
+
+db.session.commit()
+
+

@@ -31,9 +31,14 @@ Bootstrap(app)
 def enter():
     return render_template('login.html')
 
+
+
 @app.route('/')
 def log():
     return render_template('log.html')
+
+
+
 
 @app.route('/success')
 def take():
@@ -84,6 +89,7 @@ def take():
     else:
         return redirect(url_for('log') )
 
+
 @app.route('/register')
 def register():
     return render_template('register.html')
@@ -91,4 +97,4 @@ def register():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
