@@ -32,3 +32,10 @@ x = onehotencoder.fit_transform(x).toarray()
 label_encode_y = LabelEncoder()
 y = label_encode_y.fit_transform(y)
 
+#splitting dataset into train and test 
+
+from sklearn.model_selection import train_test_split
+
+
+
+
