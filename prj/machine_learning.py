@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-dataset =  pd.read_csv('/home/gayathri/project/MakeComplaint/data.csv')
+dataset =  pd.read_csv('file:///F:/MAIN/MakeComplaint/data.csv')
 
 x = dataset.iloc[:,1:-1].values
 y = dataset.iloc[:,3].values
@@ -22,4 +22,7 @@ from sklearn.preprocessing import LabelEncoder,OneHotEncoder
 label_encoder_y = LabelEncoder()
 y = label_encoder_y.fit_transform(y)
 
+#Encoding the complaint data
+import gensim
+from gensim.models import Word2Vec
 
