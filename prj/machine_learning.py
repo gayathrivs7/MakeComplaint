@@ -56,7 +56,41 @@ for i, row in df.iterrows():
     data_token = word_tokenize(row['Subject_and_Complaint'])
     result = [i for i in data_token if not i in stop_words]
     data_list.append(result)
-print(data_list)
+print(data_list) 
+new_lis = []
+lis = []
+
+
+import spacy
+nlp = spacy.load('en_core_web_md')
+for i in data_list:
+    for j in i:
+        j = nlp(j)
+        vec = j.vector_norm
+        new_lis.append(vec)
+    lis.append(new_lis)
+print(lis)
+    
+
+
+
+
+
+
+
+
+
+
+#import gensim, logging
+
+#model = gensim.models.Word2Vec(data_list), min_count=1)
+
+
+
+
+
+
+
 
 '''#Encoding the complaint data
 import skipthoughts
