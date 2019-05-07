@@ -11,19 +11,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 dataset =  pd.read_csv('/home/gayathri/project/MakeComplaint/data.csv')
+data =  pd.read_csv('/home/gayathri/project/MakeComplaint/data.csv')
 
 x = dataset.iloc[:,1:-1]
 y = dataset.iloc[:,3].values
 
-dataset['Subject'] = dataset['Subject'] =dataset['Subject'].str.replace('[^\w\s]','').str.lower()
-dataset['Complaint'] = dataset['Complaint'].str.replace(',',' ').str.lower() 
-dataset['Subject'] =  dataset['Subject'] .str.replace('\d+', ' ')
-dataset['Complaint'] =  dataset['Complaint'] .str.replace('\d+', ' ')
-dataset['Subject'] = dataset['Subject'].str.rstrip('\n')
+data['Subject'] = data['Subject'] =data['Subject'].str.replace('[^\w\s]','').str.lower()
+data['Complaint'] = data['Complaint'].str.replace(',',' ').str.lower() 
+data['Subject'] =  data['Subject'] .str.replace('\d+', ' ')
+data['Complaint'] =  data['Complaint'] .str.replace('\d+', ' ')
+data['Subject'] = data['Subject'].str.rstrip('\n')
 
-dataset['Subject_and_Complaint'] = dataset['Subject'] + " " + dataset['Complaint']
+data['Subject_and_Complaint'] = data['Subject'] + " " + data['Complaint']
         
-x = dataset.iloc[:,4].values
+#x = datase.iloc[:,4].values
 
 #splitting the data
 
@@ -36,10 +37,26 @@ from sklearn.preprocessing import LabelEncoder,OneHotEncoder
 
 label_encoder_y = LabelEncoder()
 y = label_encoder_y.fit_transform(y)
+dataframe = data[['Subject','Complaint']]
+ 
+df=dataframe
+df['Subject_and_Complaint'] = dataframe['Subject']+" "+ dataframe['Complaint']
+df=df[['Subject_and_Complaint']]
+print(df)
 
-label_encoder_x = LabelEncoder()
-x = label_encoder_y.fit_transform(x)
 
+from nltk.corpus import stopwords 
+import nltk
+from nltk.tokenize import word_tokenize 
+data_token = []
+stop_words = set(stopwords.words('english'))
+data_list = []
+
+for i, row in df.iterrows():
+    data_token = word_tokenize(row['Subject_and_Complaint'])
+    result = [i for i in data_token if not i in stop_words]
+    data_list.append(result)
+print(data_list)
 
 '''#Encoding the complaint data
 import skipthoughts
