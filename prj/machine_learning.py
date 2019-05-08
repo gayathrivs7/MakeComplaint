@@ -60,13 +60,15 @@ print(data_list)
 new_lis = []
 lis = []
 
-
+#vector representation of complaint
 import spacy
 nlp = spacy.load('en_core_web_md')
 for i in data_list:
+    new_lis = []
     for j in i:
         j = nlp(j)
         vec = j.vector_norm
+        vec=float("{0:.2f}".format(vec))
         new_lis.append(vec)
     lis.append(new_lis)
 print(lis)
