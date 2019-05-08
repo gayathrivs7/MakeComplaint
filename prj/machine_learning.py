@@ -16,11 +16,11 @@ data =  pd.read_csv('/home/gayathri/project/MakeComplaint/data.csv')
 x = dataset.iloc[:,1:-1]
 y = dataset.iloc[:,3].values
 
-data['Subject'] = data['Subject'] =data['Subject'].str.replace('[^\w\s]','').str.lower()
-data['Complaint'] = data['Complaint'].str.replace(',',' ').str.lower() 
+#data['Subject'] = data['Subject'] =data['Subject'].str.replace('[^\w\s]','').str.lower()
+#data['Complaint'] = data['Complaint'].str.replace(',',' ').str.lower() 
 data['Subject'] =  data['Subject'] .str.replace('\d+', ' ')
 data['Complaint'] =  data['Complaint'] .str.replace('\d+', ' ')
-data['Subject'] = data['Subject'].str.rstrip('\n')
+#data['Subject'] = data['Subject'].str.rstrip('\n')
 
 data['Subject_and_Complaint'] = data['Subject'] + " " + data['Complaint']
         
@@ -52,17 +52,51 @@ data_token = []
 stop_words = set(stopwords.words('english'))
 data_list = []
 
+#Removing named entities in the list
+
+import spacy
+
+nlp = spacy.load('en_core_web_md')
+
+lis =[]
+main_list =[]
+for i, row in df.iterrows():
+
+    lis =[]
+    
+    df_row  = nlp(row['Subject_and_Complaint'])
+    for ent in df_row.ents:
+        #print(ent.text, ent.label_)
+        lis .append(ent.text)
+    main_list.append(lis)
+print(main_list)
+
+    
+
+
+
+
+
+
+
 for i, row in df.iterrows():
     data_token = word_tokenize(row['Subject_and_Complaint'])
     result = [i for i in data_token if not i in stop_words]
     data_list.append(result)
-print(data_list) 
-new_lis = []
-lis = []
+#print(data_list)
+
+
+
+
 
 #vector representation of complaint
 import spacy
+
 nlp = spacy.load('en_core_web_md')
+
+new_lis = []
+lis = []
+
 for i in data_list:
     new_lis = []
     for j in i:
@@ -71,7 +105,8 @@ for i in data_list:
         vec=float("{0:.2f}".format(vec))
         new_lis.append(vec)
     lis.append(new_lis)
-print(lis)
+print("\n Vectors \n")    
+#print(lis)
     
 
 
