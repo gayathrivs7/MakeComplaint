@@ -18,7 +18,7 @@ from predict import evaluate
 from flask_bootstrap import Bootstrap
 
 
-file =   '/home/gayathri/project/MakeComplaint/data.csv'   
+file =   '/home/gayathri/project/MakeComplaint/train.csv'   
 nlp = spacy.load('en_core_web_md')
 c = Complaint(file,nlp)
 

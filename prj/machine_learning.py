@@ -16,11 +16,16 @@ data =  pd.read_csv('/home/gayathri/project/MakeComplaint/data.csv')
 x = dataset.iloc[:,1:-1]
 y = dataset.iloc[:,3].values
 
-#data['Subject'] = data['Subject'] =data['Subject'].str.replace('[^\w\s]','').str.lower()
+
+
+data['Complaint'] =  data['Complaint'].str.replace(',',' ')
+data['Subject'] = data['Subject'] =data['Subject'].str.replace('[^\w\s]','')
+data['Complaint'] = data['Complaint'] =data['Complaint'].str.replace('[^\w\s]','')
 #data['Complaint'] = data['Complaint'].str.replace(',',' ').str.lower() 
 data['Subject'] =  data['Subject'] .str.replace('\d+', ' ')
 data['Complaint'] =  data['Complaint'] .str.replace('\d+', ' ')
-#data['Subject'] = data['Subject'].str.rstrip('\n')
+data['Subject'] = data['Subject'].str.rstrip('\n')
+data['Complaint'] = data['Complaint'].str.rstrip('\n')
 
 data['Subject_and_Complaint'] = data['Subject'] + " " + data['Complaint']
         
@@ -69,21 +74,28 @@ for i, row in df.iterrows():
         #print(ent.text, ent.label_)
         lis .append(ent.text)
     main_list.append(lis)
+print("Named entity")
 print(main_list)
 
     
 
 
-
-
-
-
+#Tokens
 
 for i, row in df.iterrows():
     data_token = word_tokenize(row['Subject_and_Complaint'])
     result = [i for i in data_token if not i in stop_words]
     data_list.append(result)
-#print(data_list)
+print("Tokens without stopwords")
+print(data_list)
+
+#Removing named entity
+'''
+for m,d in  main_list,data_list:
+    for j, k in m,d:
+        if j not 
+'''
+
 
 
 
@@ -106,7 +118,7 @@ for i in data_list:
         new_lis.append(vec)
     lis.append(new_lis)
 print("\n Vectors \n")    
-#print(lis)
+print(lis)
     
 
 
