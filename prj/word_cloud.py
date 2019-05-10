@@ -34,7 +34,7 @@ print("There are {} types of departments in this dataset such as {}... \n".forma
 df[["Subject", "Complaint","Departments"]].head()
 
 
-plt.figure(figsize=(5,3))
+plt.figure(figsize=(15,10))
 
 department.size().sort_values(ascending=False).plot.bar()
 plt.xticks(rotation=50)
@@ -91,30 +91,66 @@ print(dfenv )
 
 import spacy
 nlp = spacy.load('en_core_web_md')
-water_list= []
-for i, row in dfwater.iterrows():
-    dfwater_row  =  nlp(row['Subject_and_Complaint'])
-    for word in dfwater_row:
-        water_list.append(word.text)
-print(water_list)
+
+
+
+def string_format (df):
+    
+
+    text_list= []
+    for i, row in df.iterrows():
+        df_row  =  nlp(row['Subject_and_Complaint'])
+        for word in df_row:
+            text_list.append(word.text)
+    #print(text_list)
+            
+    water= "is"  
+    # Create and generate a word cloud image:
+    for i in text_list:
+        water= water+" "+i
         
-water= "water"  
-# Create and generate a word cloud image:
-for i in water_list:
-    water= water+" "+i
-    
-print(water)
+    #print(water)
+
 
     
-wordcloud = WordCloud().generate(water)
+    wordcloud = WordCloud(max_font_size=40, background_color="white",contour_color="black",contour_width=5,mode="RGBA").generate(water)
+    
+    # Display the generated image:
+    plt.figure(figsize=(8,3))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
 
-# Display the generated image:
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
+
+string_format(dfwater)
+string_format(dfpwd)
+string_format(dfenv)
+string_format(dfkseb)
+string_format(dfksrtc)
 
 
 
+water_mask = np.array(Image.open("/home/gayathri/project/MakeComplaint/prj/water2.png"))
+water_mask
+
+def transform_format(val):
+    if val == 0:
+        return 255
+    else:
+        return val
+
+
+# Transform your mask into a new one that will work with the function:
+
+transformed_water_mask = np.ndarray((water_mask.shape[0],water_mask.shape[1]), np.int32)
+
+for i in range(len(water_mask)):
+    transformed_water_mask[i] = list(map(transform_format, water_mask[i]))
+transformed_water_mask
+
+# Create a word cloud image
+wc = WordCloud(background_color="white", max_words=1000, mask=transformed_water_mask,
+               stopwords=stopwords, contour_width=3, contour_color='firebrick')
 
 
 

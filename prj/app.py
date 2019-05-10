@@ -32,12 +32,10 @@ def enter():
     return render_template('login.html')
 
 
-
-@app.route('/')
+#Route login page
+@app.route('/',methods = ['GET','POST'])
 def log():
     return render_template('log.html')
-
-
 
 
 @app.route('/success')
