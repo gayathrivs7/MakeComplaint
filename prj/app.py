@@ -92,6 +92,10 @@ def take():
 def register():
     return render_template('register.html')
 
+@app.route('/know')
+def info():
+    return render_template('dataset.html')
+
 
 
 if __name__ == '__main__':

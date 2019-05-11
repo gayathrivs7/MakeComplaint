@@ -43,7 +43,7 @@ class Complaint:
 
  #Execution begins
 files =   '/home/gayathri/project/MakeComplaint/data.csv'   
-nlp = spacy.load('en_core_web_md')
+#nlp = spacy.load('en_core_web_md')
          
 #c = Complaint(files,nlp)
 
