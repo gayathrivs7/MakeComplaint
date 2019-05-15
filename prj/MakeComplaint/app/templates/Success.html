@@ -1,0 +1,73 @@
+    <html>
+    <head>
+        <style>
+            h2{
+                text-align: center;
+                color:white;
+            }
+        </style>
+
+    </head>
+    {%block scripts%}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    {%endblock%}
+    {%block styles%}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    {%endblock%}
+    <body style = "background-color: darkorange">
+        <h1 style="text-align:center;color:#555"> MakeComplaint</h1>
+            <div class = "jumbotron" style="height : 300px; width: 1000px;margin-left: 200px;
+            margin-top: 100px;background-color:#555;color:white;">    
+                  
+      
+            <h2>{{message}}</h2>
+            {% if flags[0] == 1 %}
+            <h2> Complaint Submitted : {{name[0]}}</h2>
+            {%endif%}
+
+            {%if  flags[1] == 1 %}
+            <h2> Complaint Submitted  : {{name[1]}}</h2>
+            {%endif%}
+              
+            {%if  flags[2] ==1%}
+            <h2> Complaint Submitted  : {{name[2]}}</h2>
+            {%endif%}
+
+            {%if  flags[3]==1%}
+            <h2> Complaint Submitted  : {{name[3]}}</h2>
+            {%endif%}
+            
+            {%if flags[4] == 1%}
+            <h2> Complaint Submitted : {{name[4]}}</h2>
+            {%endif%}
+
+            {%if flags[5] == 1%}
+            <h2> Complaint Submitted  : {{name[4]}}</h2>
+            {%endif%}
+
+            {%if flags[6] == 1%}
+            <h2> Complaint Submitted  : {{name[2]}}</h2>
+            {%endif%}
+
+            {%if flags[7] == 1%}
+            <h2> Complaint Submitted  : {{name[3]}}</h2>
+            {%endif%}
+
+            {%if flags[8] == 1%}
+            <h2> Complaint Submitted  : {{name[1]}}</h2>
+            {%endif%}
+    
+            {%if flags[9] == 1%}
+            <h2> Complaint Submitted  : {{name[0]}}</h2>
+            {%endif%}
+        </div>
+        
+    
+    </body>
+</html>

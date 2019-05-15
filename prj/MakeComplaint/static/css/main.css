@@ -1,0 +1,91 @@
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color:#555;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color:darkorange;
+    color: white;
+  }
+ .aspcl a.hover{
+   color:darkorange;
+   background-color: #555
+ }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color:darkorange;
+    text-decoration: none;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+  
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+.aclass a:hover{
+  color : darkorange;
+  text-decoration: none;
+
+}
+.aclass a:visited{
+  color:white;
+  text-decoration: none;
+}
+.btlogin :hover{
+  opacity: 0.8;
+
+}
+.btlogin{
+  background-color:darkorange;
+  color: white;
+  
+  border: none;
+  cursor: pointer;
+  
+}
+.logdiv{
+  background-color:darkorange;
+  margin-top: 50px
+
+}
+.logbody{
+  background-color: #555;
+}
+.logbuttona{
+  color: white;
+  text-decoration: none;
+
+}
+.logbuttona:hover{
+  border-color: black;
+  color:black;
+}
+.logbuttona:visited{
+  color: white;
+  text-decoration: none;
+
+}

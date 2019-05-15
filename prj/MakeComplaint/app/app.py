@@ -16,6 +16,15 @@ from topwords import most_repeated_keywords
 import predict
 from predict import evaluate
 from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+import os
+
+
+
+
+#Database connection
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 
 file =   '/home/gayathri/project/MakeComplaint/train.csv'   
@@ -24,20 +33,37 @@ c = Complaint(file,nlp)
 
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'+os.path.join(basedir,'data.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db=SQLAlchemy(app)
 Bootstrap(app)
 
+class Login(db.Model):
+    __tablename__ ="user-login"
+    #creating cols for the table
+    id          =     db.Column(db.Integer,primary_key=False)
+    aadhaar     =      db.Column(db.Integer,primary_key=True)
+    password    =      db.Column(db.String(16))
+
+    def __init__(self,id,aadhaar,password):
+        self.id =id
+        self.aadhaar =  aadhaar
+        self.password=  password
+    
+    user1 = Login('')
 
 
+
+
+@app.route('/login')
+def enter():
+    return render_template('login.html')
 
 
 #Route login page
 @app.route('/',methods = ['GET','POST'])
 def log():
     return render_template('log.html')
-
-@app.route('/signin',methods = ['GET','POST'])
-def enter():
-    return render_template('signin.html')
 
 
 @app.route('/success')
