@@ -32,15 +32,23 @@ def test(text_data):
     test_token = word_tokenize(text_data)
     #print(test_token)
     test_list =[]
-    
-    stop_words = set(stopwords.words('english'))
+
+    import spacy
+    spacy_nlp = spacy.load('en_core_web_sm')
+    spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
+   
     for i in test_token:
         
         
-        if i not in stop_words:
+        if i not in spacy_stopwords:
     
             test_list.append(i)
-    #print(test_list)
+    print("Test List")
+    print(test_list)
+
+    '''New changes'''
+
+
     
 
     #stemming and lemmatization 

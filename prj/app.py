@@ -16,14 +16,28 @@ from topwords import most_repeated_keywords
 import predict
 from predict import evaluate
 from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+import os
 
 
 file =   '/home/gayathri/project/MakeComplaint/train.csv'   
 nlp = spacy.load('en_core_web_md')
 c = Complaint(file,nlp)
 
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+
+#Db
+app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'data.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+db = SQLAlchemy(app)
+
+
+
+
+
+
 Bootstrap(app)
 
 
@@ -97,6 +111,52 @@ def register():
 @app.route('/know')
 def info():
     return render_template('dataset.html')
+@app.route('/department')
+def depart():
+    return render_template('department.html')
+
+
+
+class User(db.Model):
+    
+    __tablename__ = "dblogin"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True,nullable=False)
+    password = db.Column(db.String(120), nullable=False)
+
+    def __init__(self, username, password):
+
+	    self.username = username
+	    self.password = password
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+    
+
+db.create_all()
+db.session.commit()
+wateradmin = User(username='wateradmin', password='wateradmin')
+pwdadmin = User(username='pwdadmin', password='pwdadmin')
+ksebadmin = User(username='ksebadmin', password='ksebadmin')
+ksrtcadmin = User(username='ksrtcadmin', password='ksrtcadmin')
+envadmin = User(username='envadmin', password='envadmin')
+
+db.session.add(wateradmin)
+db.session.add(pwdadmin)
+db.session.add(ksebadmin)
+db.session.add(ksrtcadmin)
+db.session.add(envadmin)
+db.session.commit()
+print("Database created")
+#fetching all the values in the table
+all_values = User.query.all()
+for a in all_values:
+    print(a.username,a.password)
+
+
+
+
 
 
 

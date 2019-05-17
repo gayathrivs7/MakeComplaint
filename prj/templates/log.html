@@ -143,14 +143,25 @@
           if (username == 'user'&& password == 'enter')
           {
               window.open('http://127.0.0.1:5000/signin')
-              this.close();
+              
           }
-          else{
-              alert("Invalid credentials")
-          
+          if (username == 'wateradmin' && password=='wateradmin'){
+				window.open('http://127.0.0.1:5000/department')
+			  }
+			  if (username == 'pwdadmin' && password=='pwdadmin'){
+				window.open('http://127.0.0.1:5000/department')
           }
-          
-          }
+		  if (username == 'ksebadmin' && password=='ksebadmin'){
+				window.open('http://127.0.0.1:5000/department')
+		  }
+		  if (username == 'ksrtcadmin' && password=='ksrtcadmin'){
+				window.open('http://127.0.0.1:5000/department')
+		  }
+		  if (username == 'envadmin' && password=='envadmin'){
+				window.open('http://127.0.0.1:5000/department')
+		  }
+				}
+     
             </script>     
 
     </form>
