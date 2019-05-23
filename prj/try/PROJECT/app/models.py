@@ -1,5 +1,5 @@
 from flask_appbuilder import Model
-from sqlalchemy import Column, Integer, String, ForeignKey,DATE
+from sqlalchemy import Column, Integer, String, ForeignKey,Date
 from sqlalchemy.orm import relationship
 
 """
@@ -11,14 +11,14 @@ AuditMixin will add automatic timestamp of created and modified by who
 
 """
 class Usertable(Model):
-    id =Column(Integer,primary_key)
+    id =Column(Integer,primary_key=True)
     aadhaar=Column(Integer,nullable=False,unique=True)
     fname=Column(String(30),nullable=False)
     lname=Column(String(30),nullable=False)
     gender=Column(String(11),nullable=False)
     dob=Column(Date,nullable=False)
     email=Column(String(30),nullable=False)
-    mobile=Column(Integer(10),nullable=False)
+    mobile=Column(Integer,nullable=False)
     password=Column(String(10),nullable=False)
 
 
@@ -34,11 +34,3 @@ class Usertable(Model):
 
     def __repr__(self):
         return "{} {}".format(self.aadhaar,self.fname)
-
-
-        
-    
-
-
-
-

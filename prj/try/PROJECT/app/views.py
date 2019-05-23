@@ -3,6 +3,21 @@ from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder import ModelView, ModelRestApi
 
 from . import appbuilder, db
+from .models import Usertable
+
+
+
+from flask_appbuilder.security.registerviews import RegisterUserDBView
+
+
+
+
+
+class UsertableView(ModelView):
+    datamodel = SQLAInterface(Usertable)
+
+    show_fieldsets = [("Create Account",
+    {"fields":['aadhaar','fname','lname','gender','dob','email','mobile','password']})]
 
 """
     Create your Model based REST API::
@@ -48,3 +63,10 @@ def page_not_found(e):
 
 
 db.create_all()
+appbuilder.add_view(
+    UsertableView,
+    "List Groups",
+    icon="fa-folder-open-o",
+    category="Create Account",
+    category_icon="fa-envelope",
+)

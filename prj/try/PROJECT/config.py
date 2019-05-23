@@ -19,7 +19,8 @@ SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "app.db")
 
 # Flask-WTF flag for CSRF
 CSRF_ENABLED = True
-
+RECAPTCHA_PUBLIC_KEY = '6LedRP0SAAAAAOF03Nsv_ny2NzOF_Dthe_Xn269v'
+RECAPTCHA_PRIVATE_KEY = ' 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
 # ------------------------------
 # GLOBALS FOR APP Builder
 # ------------------------------
@@ -27,7 +28,7 @@ CSRF_ENABLED = True
 APP_NAME = "MakeComplaint"
 
 # Uncomment to setup Setup an App icon
-#APP_ICON = "static/img/logo.jpg"
+APP_ICON = "static/img/logo.jpg"
 
 # ----------------------------------------------------
 # AUTHENTICATION CONFIG
@@ -43,13 +44,13 @@ AUTH_TYPE = AUTH_DB
 # AUTH_ROLE_ADMIN = 'Admin'
 
 # Uncomment to setup Public role name, no authentication needed
-# AUTH_ROLE_PUBLIC = 'Public'
+AUTH_ROLE_PUBLIC = 'Public'
 
 # Will allow user self registration
 AUTH_USER_REGISTRATION = True
 
 # The default user self registration role
-# AUTH_USER_REGISTRATION_ROLE = "Public"
+AUTH_USER_REGISTRATION_ROLE = "Public"
 
 # When using LDAP Auth, setup the ldap server
 # AUTH_LDAP_SERVER = "ldap://ldapserver.new"
@@ -108,3 +109,11 @@ IMG_UPLOAD_URL = "/static/uploads/"
 # APP_THEME = "spacelab.css"
 # APP_THEME = "united.css"
 # APP_THEME = "yeti.css"
+
+
+# Config for Flask-Mail necessary for user registration
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_USE_TLS = True
+MAIL_USERNAME = 'yourappemail@gmail.com'
+MAIL_PASSWORD = 'passwordformail'
+MAIL_DEFAULT_SENDER = 'fabtest10@gmail.com'
