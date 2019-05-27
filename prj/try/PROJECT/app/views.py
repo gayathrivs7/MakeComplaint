@@ -1,6 +1,6 @@
 from flask import render_template
 from flask_appbuilder.models.sqla.interface import SQLAInterface
-from flask_appbuilder import ModelView, ModelRestApi
+from flask_appbuilder import ModelView, ModelRestApi,BaseView,expose
 
 from . import appbuilder, db
 from .models import Usertable
@@ -8,6 +8,7 @@ from .models import Usertable
 
 
 from flask_appbuilder.security.registerviews import RegisterUserDBView
+
 
 
 
@@ -61,6 +62,14 @@ def page_not_found(e):
         404,
     )
 
+class RegisterView(BaseView):
+    route_base = "/registerview"
+
+    @expose('/register/')
+    def register(self):
+        # do something with param1
+        # and return it
+        return render_template("register.html",base_template=appbuilder.base_template,appbuilder=appbuilder)
 
 db.create_all()
 appbuilder.add_view(

@@ -1,0 +1,12 @@
+{% extends "appbuilder/base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{_("My App on F.A.B.")}}</h1>
+    <p>{{_("Front Page.....................")}}</p>
+    <h2>New Users Register Here.!!</h2>
+    <button onclick="{{url_for('register')}}">Register</button>
+  </div>
+</div>
+{% endblock %}
+

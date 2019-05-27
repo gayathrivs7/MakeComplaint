@@ -28,7 +28,7 @@ RECAPTCHA_PRIVATE_KEY = ' 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
 APP_NAME = "MakeComplaint"
 
 # Uncomment to setup Setup an App icon
-APP_ICON = "static/img/logo.jpg"
+#APP_ICON = "static/img/logo.jpg"
 
 # ----------------------------------------------------
 # AUTHENTICATION CONFIG
@@ -41,7 +41,7 @@ APP_ICON = "static/img/logo.jpg"
 AUTH_TYPE = AUTH_DB
 
 # Uncomment to setup Full admin role name
-# AUTH_ROLE_ADMIN = 'Admin'
+AUTH_ROLE_ADMIN = 'Admin'
 
 # Uncomment to setup Public role name, no authentication needed
 AUTH_ROLE_PUBLIC = 'Public'

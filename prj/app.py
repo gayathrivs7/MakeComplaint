@@ -17,6 +17,7 @@ import predict
 from predict import evaluate
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String,Date
 import os
 
 
@@ -92,10 +93,7 @@ def take():
     flags[7]  = flag_ksrtc
     flags[8]  = flag_pwd
     flags[9]  = flag_water
-    
-
-
-    
+   
     if subject and message:
 
 
@@ -115,11 +113,15 @@ def info():
 def depart():
     return render_template('department.html')
 
+from database import db_session
 
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
 
 class User(db.Model):
     
-    __tablename__ = "dblogin"
+    
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True,nullable=False)
     password = db.Column(db.String(120), nullable=False)
@@ -132,16 +134,40 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+class Citizen(db.Model):
+
+    
+    id = Column(Integer, primary_key=True)
+    aadhaar = Column(Integer,unique=True,nullable=False)
+    name = Column(String(50),nullable=False)
+    email = Column(String(120),nullable=False)
+    #dob = Column(Date,nullable=False)
+    mobile=Column(Integer,nullable=False)
+    password=Column(String(20),nullable=False)
+
+
+
+    def __repr__(self):
+        return '<User %r>' % (self.name)
+
     
 
 db.create_all()
-db.session.commit()
+
 wateradmin = User(username='wateradmin', password='wateradmin')
 pwdadmin = User(username='pwdadmin', password='pwdadmin')
 ksebadmin = User(username='ksebadmin', password='ksebadmin')
 ksrtcadmin = User(username='ksrtcadmin', password='ksrtcadmin')
 envadmin = User(username='envadmin', password='envadmin')
 
+user1 = Citizen(aadhaar=123456781011,name='Gayathri',email='gayathri@gmail.com',mobile=7907683839,password='hare')
+db.session.add(user1)
+db.session.commit()
+print("First user added to Citizen")
+
+all_values=Citizen.query.all()
+for data in all_values:
+    print(data.aadhaar,data.name)
 db.session.add(wateradmin)
 db.session.add(pwdadmin)
 db.session.add(ksebadmin)
@@ -155,6 +181,28 @@ for a in all_values:
     print(a.username,a.password)
 
 
+@app.route('/register_data',methods = ['GET', 'POST'])
+def registrationdata():
+    if request.method == "POST":
+        aadhaar=request.form['aadhaar']
+
+        name = request.form['name']
+        mob = request.form['mobile']
+        password =request.form['password']
+        #dob=request.form['dob']
+        #date=request.form['date']
+        email=request.form['email']
+
+        new_user = Citizen(aadhaar=aadhaar,name=name,email=email,mobile=mob,password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        print("New user added")
+        
+        user1=Citizen.query.all()
+        for user in user1:
+            print(user.name,user.aadhaar)
+        print(user1)
+        return "helo"
 
 
 

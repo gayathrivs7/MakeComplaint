@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+<h1> Registered </h1>
+<form method="POST">
+    {{form.hidden_tag()}}
+    {{form.aadhaar .label}} {{form.aadhaar}}
+    <br>
+    {{form.first_name.label}} {{form.first_name}}
+    <br>
+    {{form.last_name.label}} {{form.last_name}}
+    <br>
+    
+
+</form>
