@@ -104,7 +104,7 @@
 </head>
 <body>
 <div class="signup-form">	
-    <form action="" method="post">
+    <form action="{{url_for('userlogin')}}" method="POST">
         <br/>
         <h2 style="text-align: center; color: darkorange;">MakeComplaint</h2>
         <hr>
@@ -116,20 +116,24 @@
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-user"></i></span>
-					<input type="text" class="form-control" id="user" name="username" placeholder="Username" >
+					<input type="text" class="form-control" id="user" name="user" placeholder="Username" >
 				</div>
         </div>
        
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-				<input type="password" class="form-control"  id="pas" name="password" placeholder="Password" >
+				<input type="password" class="form-control"  id="pas" name="pass" placeholder="Password" >
 			</div>
         </div>
 	     
 		<div class="form-group">
-            <button type="button" class="btn btn-primary btn-block btn-lg" onclick="login()">Login</button>
-        </div>
+			
+
+            <input type="submit" class="btn btn-primary btn-block btn-lg" onclick="{{url_for('userlogin')}}" value="Login">
+		</div>
+		</form>
+		<form action="" method="POST">
         <div class="form-group">
 <button type="button" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='http://127.0.0.1:5000/register'" >Register</button>
            
@@ -139,13 +143,15 @@
           
           var username = document.getElementById("user").value;
           var password = document.getElementById("pas").value;
+
+		  
           
           if (username == 'user'&& password == 'enter')
           {
               window.open('http://127.0.0.1:5000/signin')
               
           }
-          if (username == 'wateradmin' && password=='wateradmin'){
+          /*if (username == 'wateradmin' && password=='wateradmin'){
 				window.open('http://127.0.0.1:5000/department')
 			  }
 			  if (username == 'pwdadmin' && password=='pwdadmin'){
@@ -159,7 +165,7 @@
 		  }
 		  if (username == 'envadmin' && password=='envadmin'){
 				window.open('http://127.0.0.1:5000/department')
-		  }
+		  }*/
 				}
      
             </script>     
