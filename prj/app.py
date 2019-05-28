@@ -19,6 +19,7 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String,Date
 import os
+from flask_migrate import Migrate
 
 
 file =   '/home/gayathri/project/MakeComplaint/train.csv'   
@@ -30,20 +31,13 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 
 #Db
-app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'data.sqlite')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+app.config['SQLALCHEMY_DATABASE_URI']        = 'sqlite:///'+os.path.join(basedir,'data.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] =  False
 db = SQLAlchemy(app)
-
-
-
-
+Migrate(app,db)
 
 
 Bootstrap(app)
-
-
-
-
 
 #Route login page
 @app.route('/',methods = ['GET','POST'])
@@ -160,27 +154,32 @@ ksebadmin = User(username='ksebadmin', password='ksebadmin')
 ksrtcadmin = User(username='ksrtcadmin', password='ksrtcadmin')
 envadmin = User(username='envadmin', password='envadmin')
 
-user1 = Citizen(aadhaar=123456781011,name='Gayathri',email='gayathri@gmail.com',mobile=7907683839,password='hare')
-db.session.add(user1)
-db.session.commit()
-print("First user added to Citizen")
+#user1 = Citizen(aadhaar=123456781011,name='Gayathri',email='gayathri@gmail.com',mobile=7907683839,password='hare')
+#db.session.add(user1)
+#db.session.commit()
+#print("First user added to Citizen")
 
 all_values=Citizen.query.all()
 for data in all_values:
     print(data.aadhaar,data.name)
-db.session.add(wateradmin)
-db.session.add(pwdadmin)
-db.session.add(ksebadmin)
-db.session.add(ksrtcadmin)
-db.session.add(envadmin)
-db.session.commit()
+#db.session.add(wateradmin)
+#db.session.add(pwdadmin)
+#db.session.add(ksebadmin)
+#db.session.add(ksrtcadmin)
+#db.session.add(envadmin)
+#db.session.commit()
 print("Database created")
 #fetching all the values in the table
-all_values = User.query.all()
-for a in all_values:
-    print(a.username,a.password)
+#all_values = User.query.all()
+#for a in all_values:
+#    print(a.username,a.password)
 
 
+#user login
+
+
+
+#user registration
 @app.route('/register_data',methods = ['GET', 'POST'])
 def registrationdata():
     if request.method == "POST":
