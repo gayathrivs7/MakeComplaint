@@ -1,0 +1,44 @@
+	User(db.Model):
+	==============
+    
+    
+    	id = db.Column(db.Integer, primary_key=True)
+    	username = db.Column(db.String(80), unique=True,nullable=False)
+    	password = db.Column(db.String(120), nullable=False)
+
+	DATA
+
+		wateradmin = User(username='wateradmin', password='wateradmin')
+		pwdadmin = User(username='pwdadmin', password='pwdadmin')
+		ksebadmin = User(username='ksebadmin', password='ksebadmin')
+		ksrtcadmin = User(username='ksrtcadmin', password='ksrtcadmin')
+		envadmin = User(username='envadmin', password='envadmin')'''
+
+
+	Citizen(db.Model):
+	=================
+
+
+	id = Column(Integer, primary_key=True)
+    	aadhaar = Column(Integer,unique=True,nullable=False)
+    	name = Column(String(50),nullable=False)
+    	email = Column(String(120),nullable=False)
+    	#dob = Column(Date,nullable=False)
+    	mobile=Column(Integer,nullable=False)
+    	password=Column(String(20),nullable=False)
+
+
+
+
+	Complaints(db.Model):
+	====================
+	id = Column(Integer,primary_key=True)
+    	subject=Column(String(1000),nullable=False)
+    	content=Column(String(10000),nullable=False)
+    	department1=Column(String(100))
+    	department2=Column(String(100))
+
+
+
+				<input type="button"  class ="btn btn-dark btn btn_outline-light" value="LOGOUT" 
+				style=" position: absolute; right: 0;">

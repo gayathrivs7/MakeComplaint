@@ -17,7 +17,7 @@ import predict
 from predict import evaluate
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String,Date
+from sqlalchemy import Column, Integer, String,Date,Text
 import os
 from flask_migrate import Migrate
 
@@ -48,9 +48,9 @@ def log():
 def enter():
     return render_template('signin.html')
 
-
-@app.route('/success')
+@app.route('/success',methods=['GET','POST'])
 def take():
+    print("Take starting")
 
     category,dataset = c.department_class()
 
@@ -63,17 +63,19 @@ def take():
     water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq = frequency.word_frequency(water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm)
 
     water_lis,pwd_lis,ksrtc_lis,kseb_lis,env_lis=topwords.most_repeated_keywords(dfwater,dfpwd,dfksrtc,dfkseb,dfenv,water_freq,pwd_freq,ksrtc_freq,kseb_freq,env_freq,"manual")
+    
 
-
+    #subject  =  request.form['subject']
     subject  =  request.args.get('subject')
     mess =  request.args.get('message')
-    message  = subject + " "+ mess
-    
+    #message =  request.form['message']
+
+    message  = subject +" "+ mess
+
     keywords,item=testdata.test(message)
 
-    
     water_flag,pwd_flag,kseb_flag,ksrtc_flag,env_flag,water_dept,pwd_dept,kseb_dept,ksrtc_dept,env_dept,flag_env,flag_kseb,flag_ksrtc,flag_pwd,flag_water= predict.evaluate(keywords,item,water_lis,env_lis,pwd_lis,ksrtc_lis,kseb_lis,category,nlp)
-    
+
     name= water_dept+pwd_dept+kseb_dept+ksrtc_dept+env_dept
     name = ['Water Authority','PWD',  'KSEB',  'KSRTC','Environment and climate change']
     flags= [0,1,2,3,4,5,6,7,8,9]
@@ -87,13 +89,20 @@ def take():
     flags[7]  = flag_ksrtc
     flags[8]  = flag_pwd
     flags[9]  = flag_water
-   
+    print("Working >>>")
+
+    #adding into database
+    #return render_template('Success.html',name =name,flags =flags)
     if subject and message:
 
 
-        return render_template('Success.html',name =name,flags =flags)
+        return render_template('Success.html',name=name,flags=flags)
     else:
-        return redirect(url_for('log') )
+        return redirect(url_for('log'))
+
+    
+    
+
 
 
 @app.route('/register')
@@ -103,9 +112,9 @@ def register():
 @app.route('/know')
 def info():
     return render_template('dataset.html')
-@app.route('/department')
+'''@app.route('/department')
 def depart():
-    return render_template('department.html')
+    return render_template('department.html')'''
 
 from database import db_session
 
@@ -139,20 +148,27 @@ class Citizen(db.Model):
     mobile=Column(Integer,nullable=False)
     password=Column(String(20),nullable=False)
 
-
-
     def __repr__(self):
         return '<User %r>' % (self.name)
 
+class Complaints(db.Model):
+
+    id = Column(Integer,primary_key=True)
+    subject=Column(Text,nullable=False)
+    content=Column(Text,nullable=False)
     
 
+    def __repr__(self):
+        return '<Complaint %r>' %(self.subject)
+
+  
 db.create_all()
 
-wateradmin = User(username='wateradmin', password='wateradmin')
+'''wateradmin = User(username='wateradmin', password='wateradmin')
 pwdadmin = User(username='pwdadmin', password='pwdadmin')
 ksebadmin = User(username='ksebadmin', password='ksebadmin')
 ksrtcadmin = User(username='ksrtcadmin', password='ksrtcadmin')
-envadmin = User(username='envadmin', password='envadmin')
+envadmin = User(username='envadmin', password='envadmin')'''
 
 #user1 = Citizen(aadhaar=123456781011,name='Gayathri',email='gayathri@gmail.com',mobile=7907683839,password='hare')
 #db.session.add(user1)
@@ -170,12 +186,71 @@ for data in all_values:
 #db.session.commit()
 print("Database created")
 #fetching all the values in the table
-#all_values = User.query.all()
-#for a in all_values:
-#    print(a.username,a.password)
-
+all_values = User.query.all()
+for a in all_values:
+    print(a.username,a.password)
+all_values=Citizen.query.all()
+for i in all_values:
+    print(i.aadhaar,i.password)
 
 #user login
+@app.route('/userlogin',methods = ['GET','POST'])
+def userlogin():
+    print("user login starting")
+    if request.method == 'POST':
+
+        username=request.form['user']
+        password=request.form['pass']
+        print("username",username)
+        print("password",password)
+
+        login_dept = User.query.all()
+        login_user = Citizen.query.all()
+        for i in login_user:
+            print(type(i.aadhaar),i.password)
+        user_list=[]
+        dept_list=[]
+        for i in login_user:
+            i.aadhaar=str(i.aadhaar)
+            if i.aadhaar==username and i.password==password:
+
+                user_list.append(i.aadhaar)
+                user_list.append(i.password)
+                print("Adhaar",i.aadhaar)
+                print("Password",i.password)
+                 #return render_template('signin.html')
+
+
+        for i in login_dept:
+            if i.username ==username and i.password==password:
+                dept_list.append(username)
+                dept_list.append(password)
+
+                print(i.username)
+                print(i.password)
+                #return render_template('department.html',username=username)
+
+        #print(login_dept)
+        #Students.query.filter_by(city = ’Hyderabad’).all()
+        print(user_list)
+        print(dept_list)
+        if len(user_list)!=0:
+
+            return render_template('signin.html')
+        elif len(dept_list)!=0:
+
+            return render_template('department.html',username=username)
+        else:
+            return render_template('invalid.html')
+
+
+        '''if flag==1:
+
+            return render_template('department.html',username=username)
+        elif flag==0:
+            return render_template('department.html',username=username)
+        else:
+            return render_template('invalid.html')'''
 
 
 
@@ -201,8 +276,31 @@ def registrationdata():
         for user in user1:
             print(user.name,user.aadhaar)
         print(user1)
+        '''#inserting Citizen username and password into USer table
+        new_user = User(username=email,password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        print("Data added to user table")
+        user1=User.query.all()
+        for user in user1:
+            print(user.name,user.aadhaar)
+        print(user1)'''
+
+
         return "helo"
 
+    
+#submit complaint
+'''@app.route('/submit',methods=['GET','POST'])
+def submit():
+    print("Submit function entering")
+    if request.method=='GET':
+        subject  =request.form['subject']
+        complaint =request.form['message']
+
+        print(subject,complaint)
+        return redirect(url_for('take'))'''
+        
 
 
 
