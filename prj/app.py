@@ -34,10 +34,20 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']        = 'sqlite:///'+os.path.join(basedir,'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] =  False
 db = SQLAlchemy(app)
-Migrate(app,db)
+migrate = Migrate(app,db)
 
 
 Bootstrap(app)
+
+#taking form data from login page
+def get_login_data():
+    aadhaar = request.args.get('user')
+    password = request.args.get('pass')
+    print("Function")
+    print(aadhaar)
+    print(password)
+    return aadhaar,password
+
 
 #Route login page
 @app.route('/',methods = ['GET','POST'])
@@ -92,11 +102,21 @@ def take():
     print("Working >>>")
 
     #adding into database
+    #taking aadhaar from database
+   
+    
+
+
+    new_complaint = Complaints(subject=subject,content=message)
+    db.session.add(new_complaint)
+    db.session.commit()
+    print('New Complaint submitted ')
+
     #return render_template('Success.html',name =name,flags =flags)
     if subject and message:
 
 
-        return render_template('Success.html',name=name,flags=flags)
+        return render_template('Success.html',name=name,flags=flags,)
     else:
         return redirect(url_for('log'))
 
@@ -157,6 +177,7 @@ class Complaints(db.Model):
     subject=Column(Text,nullable=False)
     content=Column(Text,nullable=False)
     
+    
 
     def __repr__(self):
         return '<Complaint %r>' %(self.subject)
@@ -216,6 +237,7 @@ def userlogin():
 
                 user_list.append(i.aadhaar)
                 user_list.append(i.password)
+                user_list.append(i.name)
                 print("Adhaar",i.aadhaar)
                 print("Password",i.password)
                  #return render_template('signin.html')
@@ -232,18 +254,19 @@ def userlogin():
 
         #print(login_dept)
         #Students.query.filter_by(city = ’Hyderabad’).all()
+
         print(user_list)
         print(dept_list)
         if len(user_list)!=0:
 
-            return render_template('signin.html')
+            return render_template('signin.html',)
         elif len(dept_list)!=0:
 
             return render_template('department.html',username=username)
         else:
             return render_template('invalid.html')
-
-
+        
+        
         '''if flag==1:
 
             return render_template('department.html',username=username)
@@ -288,6 +311,10 @@ def registrationdata():
 
 
         return "helo"
+@app.route('/shownotifications')
+def show_notifications():
+    pass
+
 
     
 #submit complaint
@@ -300,9 +327,6 @@ def submit():
 
         print(subject,complaint)
         return redirect(url_for('take'))'''
-        
-
-
 
 
 if __name__ == '__main__':
