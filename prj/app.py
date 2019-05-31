@@ -107,7 +107,7 @@ def take():
     
 
 
-    new_complaint = Complaints(subject=subject,content=message)
+    new_complaint = Complaints(subject=subject,content=mess)
     db.session.add(new_complaint)
     db.session.commit()
     print('New Complaint submitted ')
@@ -311,6 +311,7 @@ def registrationdata():
 
 
         return "helo"
+#shows complaint records 
 @app.route('/shownotifications')
 def show_notifications():
     all_data = Complaints.query.all()
@@ -326,9 +327,7 @@ def show_notifications():
 
     length=len(complaints_content_list)
     return render_template('table.html',length=length,complaints_id_list=complaints_id_list,complaints_subject_list=complaints_subject_list,complaints_content_list=complaints_content_list)
-
-
-    
+  
 #submit complaint
 '''@app.route('/submit',methods=['GET','POST'])
 def submit():
