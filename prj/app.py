@@ -17,9 +17,10 @@ import predict
 from predict import evaluate
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String,Date,Text
+from sqlalchemy import Column, Integer, String,Date,Text,Boolean,ForeignKey
 import os
 from flask_migrate import Migrate
+from sqlalchemy.orm import relationship
 
 
 file =   '/home/gayathri/project/MakeComplaint/train.csv'   
@@ -111,6 +112,16 @@ def take():
     db.session.add(new_complaint)
     db.session.commit()
     print('New Complaint submitted ')
+    #all_data = Complaints.query.all()
+    obj = db.session.query(Complaints).order_by(Complaints.comp_id.desc()).first()
+    last_subject=obj.subject
+    last_complaint=obj.content
+    last_id=obj.comp_id
+
+    notification = Notifications(comp_id=last_id,subject=last_subject,complaint=last_complaint)
+    db.session.add(notification)
+    db.session.commit()
+    print("new notification added")
 
     #return render_template('Success.html',name =name,flags =flags)
     if subject and message:
@@ -143,8 +154,7 @@ def shutdown_session(exception=None):
     db_session.remove()
 
 class User(db.Model):
-    
-    
+  
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True,nullable=False)
     password = db.Column(db.String(120), nullable=False)
@@ -158,8 +168,7 @@ class User(db.Model):
         return '<User %r>' % self.username
 
 class Citizen(db.Model):
-
-    
+   
     id = Column(Integer, primary_key=True)
     aadhaar = Column(Integer,unique=True,nullable=False)
     name = Column(String(50),nullable=False)
@@ -173,19 +182,30 @@ class Citizen(db.Model):
 
 class Complaints(db.Model):
 
-    id = Column(Integer,primary_key=True)
+    comp_id = Column(Integer,primary_key=True)
     subject=Column(Text,nullable=False)
     content=Column(Text,nullable=False)
-    
-    
+    #comp=db.relationship("Notifications")
 
     def __repr__(self):
         return '<Complaint %r>' %(self.subject)
 
-  
-db.create_all()
 
-'''wateradmin = User(username='wateradmin', password='wateradmin')
+class Notifications(db.Model):
+    id = Column(Integer,primary_key=True)
+    comp_id =Column(Integer)
+    subject=Column(String(1000))
+    complaint=Column(String(1000))
+    viewed =Column(Boolean,default=False)
+
+    def __repr__(self):
+        print(self.id)
+
+
+
+db.create_all()
+'''
+wateradmin = User(username='wateradmin', password='wateradmin')
 pwdadmin = User(username='pwdadmin', password='pwdadmin')
 ksebadmin = User(username='ksebadmin', password='ksebadmin')
 ksrtcadmin = User(username='ksrtcadmin', password='ksrtcadmin')
@@ -199,12 +219,12 @@ envadmin = User(username='envadmin', password='envadmin')'''
 all_values=Citizen.query.all()
 for data in all_values:
     print(data.aadhaar,data.name)
-#db.session.add(wateradmin)
-#db.session.add(pwdadmin)
-#db.session.add(ksebadmin)
-#db.session.add(ksrtcadmin)
-#db.session.add(envadmin)
-#db.session.commit()
+'''db.session.add(wateradmin)
+db.session.add(pwdadmin)
+db.session.add(ksebadmin)
+db.session.add(ksrtcadmin)
+db.session.add(envadmin)'''
+db.session.commit()
 print("Database created")
 #fetching all the values in the table
 all_values = User.query.all()
@@ -321,7 +341,7 @@ def show_notifications():
 
     for i in all_data:
        #print(i.id,i.subject,i.content)
-       complaints_id_list.append(i.id)
+       complaints_id_list.append(i.comp_id)
        complaints_subject_list.append(i.subject)
        complaints_content_list.append(i.content)
 
