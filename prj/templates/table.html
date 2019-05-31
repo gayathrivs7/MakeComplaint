@@ -1,0 +1,27 @@
+
+{% extends "bootstrap/base.html"%}
+{%block content%}
+<h1>No : of Records : {{length}}</h1>
+<h1>Records</h1>
+<table border="1">
+        
+  
+    <tr> <th>ID</th>
+        <th>SUBJECT</th>
+        <th>CONTENT</th>
+    </tr>
+    {% for i in range(0,length+1) %} 
+    <tr>
+        <td>{{complaints_id_list[i]}}</td>
+       
+        <td>{{complaints_subject_list[i]}}</td>
+       
+        <td>{{complaints_content_list[i]}}</td>
+       
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

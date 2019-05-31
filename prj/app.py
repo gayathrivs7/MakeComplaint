@@ -313,7 +313,19 @@ def registrationdata():
         return "helo"
 @app.route('/shownotifications')
 def show_notifications():
-    pass
+    all_data = Complaints.query.all()
+    complaints_id_list=[]
+    complaints_subject_list=[]
+    complaints_content_list=[]
+
+    for i in all_data:
+       #print(i.id,i.subject,i.content)
+       complaints_id_list.append(i.id)
+       complaints_subject_list.append(i.subject)
+       complaints_content_list.append(i.content)
+
+    length=len(complaints_content_list)
+    return render_template('table.html',length=length,complaints_id_list=complaints_id_list,complaints_subject_list=complaints_subject_list,complaints_content_list=complaints_content_list)
 
 
     
