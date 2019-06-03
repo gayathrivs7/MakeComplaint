@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,redirect,url_for
+from flask import Flask, render_template,request,redirect,url_for,session
 from Complaint  import Complaint
 import spacy
 import preprocess
@@ -30,6 +30,7 @@ c = Complaint(file,nlp)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+app.secret_key=os.urandom(24)
 
 #Db
 app.config['SQLALCHEMY_DATABASE_URI']        = 'sqlite:///'+os.path.join(basedir,'data.sqlite')
@@ -285,6 +286,7 @@ def userlogin():
                  #return render_template('signin.html')
 
 
+
         for i in login_dept:
             if i.username ==username and i.password==password:
                 dept_list.append(username)
@@ -292,6 +294,7 @@ def userlogin():
 
                 print(i.username)
                 print(i.password)
+                session['depart']=password
                 #return render_template('department.html',username=username)
 
         #print(login_dept)
@@ -353,6 +356,34 @@ def registrationdata():
 
 
         return "helo"
+
+#Group Complaints
+from bs4 import BeautifulSoup
+@app.route('/groupComplaints')
+def group_complaints():
+    username=User.query.all()
+    usernames=[]
+    departments=['PWD ','Water Authority','Environment and climate change','KSEB','KSRTC']
+    
+    for i in username:
+        usernames.append(i.username)
+    #grouping complaints
+    waterdata=Complaints.query.filter(Complaints.department=='Water Authority')
+    pwddata=Complaints.query.filter(Complaints.department=='PWD')
+    envdata=Complaints.query.filter(Complaints.department=='Environment and climate change')
+    ksebdata=Complaints.query.filter(Complaints.department=='KSEB')
+    ksrtcdata=Complaints.query.filter(Complaints.department=='Water Authority')
+    
+    
+
+    for i in waterdata:
+
+        print(i.subject,i.content,i.department)
+    
+
+    return render_template('department.html')
+    
+
 #shows complaint records 
 @app.route('/shownotifications')
 def show_notifications():
@@ -369,8 +400,12 @@ def show_notifications():
        complaints_content_list.append(i.content)
        complaint_department.append(i.department)
 
+    
     length=len(complaints_content_list)
-    return render_template('table.html',length=length,complaints_id_list=complaints_id_list,complaints_subject_list=complaints_subject_list,complaints_content_list=complaints_content_list,complaint_department=complaint_department)
+    soup = BeautifulSoup('department.html', 'html.parser')
+    username=session['depart']
+    print("session",username)
+    return render_template('table.html',_anchor='myanchor',length=length,complaints_id_list=complaints_id_list,complaints_subject_list=complaints_subject_list,complaints_content_list=complaints_content_list,complaint_department=complaint_department)
   
 #submit complaint
 '''@app.route('/submit',methods=['GET','POST'])
