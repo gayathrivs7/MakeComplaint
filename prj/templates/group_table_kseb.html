@@ -1,0 +1,29 @@
+
+{% extends "bootstrap/base.html"%}
+{%block content%}
+<h1>No : of Records : {{length_kseb}}</h1>
+<h1>Records</h1>
+<table border="1">
+
+    <tr> <th>ID</th>
+        <th>SUBJECT</th>
+        <th>CONTENT</th>
+        <th>DEPARTTMENT</th>
+    </tr>
+    {% for i in range(0,length_kseb+1) %} 
+    <tr>
+        <td>{{kseb_id[i]}}</td>
+       
+        <td>{{kseb_subject[i]}}</td>
+       
+        <td>{{kseb_content[i]}}</td>
+
+        <td>{{kseb_department[i]}}</td>
+       
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
