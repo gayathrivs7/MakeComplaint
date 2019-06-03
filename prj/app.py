@@ -373,15 +373,28 @@ def group_complaints():
     envdata=Complaints.query.filter(Complaints.department=='Environment and climate change')
     ksebdata=Complaints.query.filter(Complaints.department=='KSEB')
     ksrtcdata=Complaints.query.filter(Complaints.department=='Water Authority')
-    
-    
-
+    username=session['depart']
+    print("session",username)
+    water_id=[]
+    water_subject=[]
+    water_content=[]
+    water_department=[]
     for i in waterdata:
+        water_id.append(i.comp_id)
+        water_subject.append(i.subject)
+        water_content.append(i.content)
+        water_department.append(i.department)
+    length=len(water_id)
+
+    if username=='wateradmin':
+        return render_template('group_table.html',length=length,water_id=water_id,water_subject=water_subject,water_content=water_content,water_department=water_department)
+
+    '''for i in waterdata:
 
         print(i.subject,i.content,i.department)
     
 
-    return render_template('department.html')
+    return render_template('department.html')'''
     
 
 #shows complaint records 
@@ -402,9 +415,7 @@ def show_notifications():
 
     
     length=len(complaints_content_list)
-    soup = BeautifulSoup('department.html', 'html.parser')
-    username=session['depart']
-    print("session",username)
+    
     return render_template('table.html',_anchor='myanchor',length=length,complaints_id_list=complaints_id_list,complaints_subject_list=complaints_subject_list,complaints_content_list=complaints_content_list,complaint_department=complaint_department)
   
 #submit complaint
