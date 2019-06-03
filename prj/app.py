@@ -36,10 +36,7 @@ app.config['SQLALCHEMY_DATABASE_URI']        = 'sqlite:///'+os.path.join(basedir
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] =  False
 db = SQLAlchemy(app)
 migrate = Migrate(app,db)
-
-
 Bootstrap(app)
-
 #taking form data from login page
 def get_login_data():
     aadhaar = request.args.get('user')
@@ -48,7 +45,6 @@ def get_login_data():
     print(aadhaar)
     print(password)
     return aadhaar,password
-
 
 #Route login page
 @app.route('/',methods = ['GET','POST'])
@@ -100,19 +96,50 @@ def take():
     flags[7]  = flag_ksrtc
     flags[8]  = flag_pwd
     flags[9]  = flag_water
+    
+
+    #Prediction list
+    predicted_class=[]
+    if flags[0]==1:
+        predicted_class.append(name[0])
+    if flags[1]==1:
+        predicted_class.append(name[1])
+    if flags[2]==1:
+        predicted_class.append(name[2])
+    if flags[3]==1:
+        predicted_class.append(name[3])
+    if flags[4]==1:
+        predicted_class.append(name[4])
+    if flags[5]==1:
+        predicted_class.append(name[4])
+    if flags[6]==1:
+        predicted_class.append(name[2])
+    if flags[7]==1:
+        predicted_class.append(name[3])
+    if flags[8]==1:
+        predicted_class.append(name[1])
+    if flags[9]==1:
+        predicted_class.append(name[0])
+
+    print("Predicted class")
+    print(predicted_class)
+        
     print("Working >>>")
 
     #adding into database
     #taking aadhaar from database
-   
-    
+    flag=0
+    predicted_class_length=len(predicted_class)
+    print("Predicted class length",predicted_class_length)
+    for i in range(0,predicted_class_length):
+        new_complaint = Complaints(subject=subject,content=mess,department=predicted_class[i])
+        db.session.add(new_complaint)
+        flag=flag+1
+        db.session.commit()
 
-
-    new_complaint = Complaints(subject=subject,content=mess)
-    db.session.add(new_complaint)
-    db.session.commit()
-    print('New Complaint submitted ')
+        print('New Complaint submitted ')
     #all_data = Complaints.query.all()
+    print("Flag Complaints length",flag)
     obj = db.session.query(Complaints).order_by(Complaints.comp_id.desc()).first()
     last_subject=obj.subject
     last_complaint=obj.content
@@ -126,15 +153,9 @@ def take():
     #return render_template('Success.html',name =name,flags =flags)
     if subject and message:
 
-
         return render_template('Success.html',name=name,flags=flags,)
     else:
         return redirect(url_for('log'))
-
-    
-    
-
-
 
 @app.route('/register')
 def register():
@@ -185,6 +206,7 @@ class Complaints(db.Model):
     comp_id = Column(Integer,primary_key=True)
     subject=Column(Text,nullable=False)
     content=Column(Text,nullable=False)
+    department=Column(Text)
     #comp=db.relationship("Notifications")
 
     def __repr__(self):
@@ -204,8 +226,8 @@ class Notifications(db.Model):
 
 
 db.create_all()
-'''
-wateradmin = User(username='wateradmin', password='wateradmin')
+
+'''wateradmin = User(username='wateradmin', password='wateradmin')
 pwdadmin = User(username='pwdadmin', password='pwdadmin')
 ksebadmin = User(username='ksebadmin', password='ksebadmin')
 ksrtcadmin = User(username='ksrtcadmin', password='ksrtcadmin')
@@ -338,15 +360,17 @@ def show_notifications():
     complaints_id_list=[]
     complaints_subject_list=[]
     complaints_content_list=[]
+    complaint_department=[]
 
     for i in all_data:
        #print(i.id,i.subject,i.content)
        complaints_id_list.append(i.comp_id)
        complaints_subject_list.append(i.subject)
        complaints_content_list.append(i.content)
+       complaint_department.append(i.department)
 
     length=len(complaints_content_list)
-    return render_template('table.html',length=length,complaints_id_list=complaints_id_list,complaints_subject_list=complaints_subject_list,complaints_content_list=complaints_content_list)
+    return render_template('table.html',length=length,complaints_id_list=complaints_id_list,complaints_subject_list=complaints_subject_list,complaints_content_list=complaints_content_list,complaint_department=complaint_department)
   
 #submit complaint
 '''@app.route('/submit',methods=['GET','POST'])
