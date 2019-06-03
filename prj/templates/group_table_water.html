@@ -1,17 +1,16 @@
 
 {% extends "bootstrap/base.html"%}
 {%block content%}
-<h1>No : of Records : {{length}}</h1>
+<h1>No : of Records : {{length_water}}</h1>
 <h1>Records</h1>
 <table border="1">
-        
-  
+          
     <tr> <th>ID</th>
         <th>SUBJECT</th>
         <th>CONTENT</th>
         <th>DEPARTTMENT</th>
     </tr>
-    {% for i in range(0,length+1) %} 
+    {% for i in range(0,length_water+1) %} 
     <tr>
         <td>{{water_id[i]}}</td>
        

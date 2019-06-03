@@ -1,0 +1,29 @@
+
+{% extends "bootstrap/base.html"%}
+{%block content%}
+<h1>No : of Records : {{length_ksrtc}}</h1>
+<h1>Records</h1>
+<table border="1">
+
+    <tr> <th>ID</th>
+        <th>SUBJECT</th>
+        <th>CONTENT</th>
+        <th>DEPARTTMENT</th>
+    </tr>
+    {% for i in range(0,length_ksrtc+1) %} 
+    <tr>
+        <td>{{ksrtc_id[i]}}</td>
+       
+        <td>{{ksrtc_subject[i]}}</td>
+       
+        <td>{{ksrtc_content[i]}}</td>
+
+        <td>{{ksrtc_department[i]}}</td>
+       
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

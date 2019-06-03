@@ -372,7 +372,7 @@ def group_complaints():
     pwddata=Complaints.query.filter(Complaints.department=='PWD')
     envdata=Complaints.query.filter(Complaints.department=='Environment and climate change')
     ksebdata=Complaints.query.filter(Complaints.department=='KSEB')
-    ksrtcdata=Complaints.query.filter(Complaints.department=='Water Authority')
+    ksrtcdata=Complaints.query.filter(Complaints.department=='KSRTC')
     username=session['depart']
     print("session",username)
     water_id=[]
@@ -384,10 +384,38 @@ def group_complaints():
         water_subject.append(i.subject)
         water_content.append(i.content)
         water_department.append(i.department)
-    length=len(water_id)
+    length_water=len(water_id)
+
+    pwd_id=[]
+    pwd_subject=[]
+    pwd_content=[]
+    pwd_department=[]
+    for i in pwddata:
+        pwd_id.append(i.comp_id)
+        pwd_subject.append(i.subject)
+        pwd_content.append(i.content)
+        pwd_department.append(i.department)
+    length_pwd=len(pwd_id)
+
+    ksrtc_id=[]
+    ksrtc_subject=[]
+    ksrtc_content=[]
+    ksrtc_department=[]
+    for i in ksrtcdata:
+        ksrtc_id.append(i.comp_id)
+        ksrtc_subject.append(i.subject)
+        ksrtc_content.append(i.content)
+        ksrtc_department.append(i.department)
+    length_ksrtc=len(pwd_id)
 
     if username=='wateradmin':
-        return render_template('group_table.html',length=length,water_id=water_id,water_subject=water_subject,water_content=water_content,water_department=water_department)
+        return render_template('group_table_water.html',length_water=length_water,water_id=water_id,water_subject=water_subject,water_content=water_content,water_department=water_department)
+    if username=='pwdadmin':
+        return render_template('group_table_pwd.html',length_pwd=length_pwd,pwd_id=pwd_id,pwd_subject=pwd_subject,pwd_content=pwd_content,pwd_department=pwd_department)
+    if username=='ksrtcadmin':
+        return render_template('group_table_ksrtc.html',length_ksrtc=length_ksrtc,ksrtc_id=ksrtc_id,ksrtc_subject=ksrtc_subject,ksrtc_content=ksrtc_content,ksrtc_department=ksrtc_department)
+
+
 
     '''for i in waterdata:
 
