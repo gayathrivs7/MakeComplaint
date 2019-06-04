@@ -9,8 +9,9 @@
         <th>SUBJECT</th>
         <th>CONTENT</th>
         <th>DEPARTTMENT</th>
+        <th></th>
     </tr>
-    {% for i in range(0,length_pwd+1) %} 
+    {% for i in range(0,length_pwd) %} 
     <tr>
         <td>{{pwd_id[i]}}</td>
        
@@ -19,6 +20,8 @@
         <td>{{pwd_content[i]}}</td>
 
         <td>{{pwd_department[i]}}</td>
+
+        <td><input type="submit"value="view"></td>
        
     </tr>
 

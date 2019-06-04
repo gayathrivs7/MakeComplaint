@@ -9,8 +9,9 @@
         <th>SUBJECT</th>
         <th>CONTENT</th>
         <th>DEPARTTMENT</th>
+        <th></th>
     </tr>
-    {% for i in range(0,length_water+1) %} 
+    {% for i in range(0,length_water) %} 
     <tr>
         <td>{{water_id[i]}}</td>
        
@@ -19,6 +20,8 @@
         <td>{{water_content[i]}}</td>
 
         <td>{{water_department[i]}}</td>
+
+        <td><input type="submit"value="view"></td>
        
     </tr>
 
