@@ -133,7 +133,8 @@ def take():
     predicted_class_length=len(predicted_class)
     print("Predicted class length",predicted_class_length)
     for i in range(0,predicted_class_length):
-        new_complaint = Complaints(subject=subject,content=mess,department=predicted_class[i])
+        id=session['id']
+        new_complaint = Complaints(subject=subject,content=mess,department=predicted_class[i],status="Submitted",user_id=id)
         db.session.add(new_complaint)
         flag=flag+1
         db.session.commit()
@@ -208,6 +209,10 @@ class Complaints(db.Model):
     subject=Column(Text,nullable=False)
     content=Column(Text,nullable=False)
     department=Column(Text)
+    status=Column(Text)
+    user_id=Column(Integer)
+
+    #id = Column(Integer,ForeignKey(Citizen.id))
     #comp=db.relationship("Notifications")
 
     def __repr__(self):
@@ -227,13 +232,13 @@ class Notifications(db.Model):
 
 
 db.create_all()
-
-'''wateradmin = User(username='wateradmin', password='wateradmin')
+'''
+wateradmin = User(username='wateradmin', password='wateradmin')
 pwdadmin = User(username='pwdadmin', password='pwdadmin')
 ksebadmin = User(username='ksebadmin', password='ksebadmin')
 ksrtcadmin = User(username='ksrtcadmin', password='ksrtcadmin')
-envadmin = User(username='envadmin', password='envadmin')'''
-
+envadmin = User(username='envadmin', password='envadmin')
+'''
 #user1 = Citizen(aadhaar=123456781011,name='Gayathri',email='gayathri@gmail.com',mobile=7907683839,password='hare')
 #db.session.add(user1)
 #db.session.commit()
@@ -283,6 +288,11 @@ def userlogin():
                 user_list.append(i.name)
                 print("Adhaar",i.aadhaar)
                 print("Password",i.password)
+                user_id=Citizen.query.filter(Citizen.aadhaar==i.aadhaar)
+                for i in user_id:
+
+                    session['id']=i.id
+                    print(i.id)
                  #return render_template('signin.html')
 
 
@@ -379,11 +389,15 @@ def group_complaints():
     water_subject=[]
     water_content=[]
     water_department=[]
+    water_user_id=[]
+    water_status=[]
     for i in waterdata:
         water_id.append(i.comp_id)
         water_subject.append(i.subject)
         water_content.append(i.content)
         water_department.append(i.department)
+        water_user_id.append(i.user_id)
+        water_status.append(i.status)
     length_water=len(water_id)
 
     pwd_id=[]
@@ -435,7 +449,7 @@ def group_complaints():
     
 
     if username=='wateradmin':
-        return render_template('group_table_water.html',length_water=length_water,water_id=water_id,water_subject=water_subject,water_content=water_content,water_department=water_department)
+        return render_template('group_table_water.html',water_status=water_status,water_user_id=water_user_id,length_water=length_water,water_id=water_id,water_subject=water_subject,water_content=water_content,water_department=water_department)
     if username=='pwdadmin':
         return render_template('group_table_pwd.html',length_pwd=length_pwd,pwd_id=pwd_id,pwd_subject=pwd_subject,pwd_content=pwd_content,pwd_department=pwd_department)
     if username=='ksrtcadmin':
