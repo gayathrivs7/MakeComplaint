@@ -404,22 +404,31 @@ def group_complaints():
     pwd_subject=[]
     pwd_content=[]
     pwd_department=[]
+    pwd_status=[]
+    pwd_user_id =[]
+
     for i in pwddata:
         pwd_id.append(i.comp_id)
         pwd_subject.append(i.subject)
         pwd_content.append(i.content)
         pwd_department.append(i.department)
+        pwd_status.append(i.status)
+        pwd_user_id.append(i.user_id)
     length_pwd=len(pwd_id)
 
     ksrtc_id=[]
     ksrtc_subject=[]
     ksrtc_content=[]
     ksrtc_department=[]
+    ksrtc_status=[]
+    ksrtc_user_id=[]
     for i in ksrtcdata:
         ksrtc_id.append(i.comp_id)
         ksrtc_subject.append(i.subject)
         ksrtc_content.append(i.content)
         ksrtc_department.append(i.department)
+        ksrtc_status.append(i.status)
+        ksrtc_user_id.append(i.user_id)
     length_ksrtc=len(ksrtc_id)
 
 
@@ -428,11 +437,15 @@ def group_complaints():
     env_subject=[]
     env_content=[]
     env_department=[]
+    env_status=[]
+    env_user_id=[]
     for i in envdata:
         env_id.append(i.comp_id)
         env_subject.append(i.subject)
         env_content.append(i.content)
         env_department.append(i.department)
+        env_status.append(i.status)
+        env_user_id.append(i.user_id)
     length_env=len(env_id)
 
 
@@ -440,24 +453,28 @@ def group_complaints():
     kseb_subject=[]
     kseb_content=[]
     kseb_department=[]
+    kseb_status=[]
+    kseb_user_id=[]
     for i in ksebdata:
         kseb_id.append(i.comp_id)
         kseb_subject.append(i.subject)
         kseb_content.append(i.content)
         kseb_department.append(i.department)
+        kseb_status.append(i.status)
+        kseb_user_id.append(i.user_id)
     length_kseb=len(kseb_id)
     
 
     if username=='wateradmin':
         return render_template('group_table_water.html',water_status=water_status,water_user_id=water_user_id,length_water=length_water,water_id=water_id,water_subject=water_subject,water_content=water_content,water_department=water_department)
     if username=='pwdadmin':
-        return render_template('group_table_pwd.html',length_pwd=length_pwd,pwd_id=pwd_id,pwd_subject=pwd_subject,pwd_content=pwd_content,pwd_department=pwd_department)
+        return render_template('group_table_pwd.html',length_pwd=length_pwd,pwd_status=pwd_status,pwd_user_id=pwd_user_id,pwd_id=pwd_id,pwd_subject=pwd_subject,pwd_content=pwd_content,pwd_department=pwd_department)
     if username=='ksrtcadmin':
-        return render_template('group_table_ksrtc.html',length_ksrtc=length_ksrtc,ksrtc_id=ksrtc_id,ksrtc_subject=ksrtc_subject,ksrtc_content=ksrtc_content,ksrtc_department=ksrtc_department)
+        return render_template('group_table_ksrtc.html',length_ksrtc=length_ksrtc,ksrtc_status=ksrtc_status,ksrtc_user_id=ksrtc_user_id,ksrtc_id=ksrtc_id,ksrtc_subject=ksrtc_subject,ksrtc_content=ksrtc_content,ksrtc_department=ksrtc_department)
     if username=='envadmin':
-        return render_template('group_table_env.html',length_env=length_env,env_id=env_id,env_subject=env_subject,env_content=env_content,env_department=env_department)
+        return render_template('group_table_env.html',length_env=length_env,env_status=env_status,env_user_id=env_user_id,env_id=env_id,env_subject=env_subject,env_content=env_content,env_department=env_department)
     if username=='ksebadmin':
-        return render_template('group_table_kseb.html',length_kseb=length_kseb,kseb_id=kseb_id,kseb_subject=kseb_subject,kseb_content=kseb_content,kseb_department=kseb_department)
+        return render_template('group_table_kseb.html',length_kseb=length_kseb,kseb_status=kseb_status,kseb_user_id=kseb_user_id,kseb_id=kseb_id,kseb_subject=kseb_subject,kseb_content=kseb_content,kseb_department=kseb_department)
 
 
 

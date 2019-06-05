@@ -9,6 +9,9 @@
         <th>SUBJECT</th>
         <th>CONTENT</th>
         <th>DEPARTTMENT</th>
+        <th>STATUS</th>
+        <th>USER_ID</th>
+        <th></th>
         <th></th>
     </tr>
     {% for i in range(0,length_kseb) %} 
@@ -20,6 +23,10 @@
         <td>{{kseb_content[i]}}</td>
 
         <td>{{kseb_department[i]}}</td>
+
+        <td>{{kseb_status[i]}}</td>
+
+        <td>{{kseb_user_id[i]}}</td>
 
         <td><input type="submit"value="view"></td>
        
