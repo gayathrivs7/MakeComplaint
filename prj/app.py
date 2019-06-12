@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,redirect,url_for,session
+from flask import Flask, render_template,request,redirect,url_for,session,flash
 from Complaint  import Complaint
 import spacy
 import preprocess
@@ -124,6 +124,8 @@ def take():
 
     print("Predicted class")
     print(predicted_class)
+    for i in predicted_class:
+        flash(i)
         
     print("Working >>>")
 
@@ -154,6 +156,7 @@ def take():
 
     #return render_template('Success.html',name =name,flags =flags)
     if subject and message:
+        
 
         return render_template('Success.html',name=name,flags=flags,)
     else:
@@ -368,7 +371,7 @@ def registrationdata():
         return "helo"
 
 #Group Complaints
-from bs4 import BeautifulSoup
+
 @app.route('/groupComplaints')
 def group_complaints():
     username=User.query.all()
