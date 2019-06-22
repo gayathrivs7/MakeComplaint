@@ -66,17 +66,17 @@
     .signup-form .btn {        
         font-size: 16px;
         font-weight: bold;
-		background: darkorange;
+		background: rgb(25, 0, 255);
         border-radius: 3px;
 		border: none;
 		min-width: 140px;
         outline: none !important;
     }
 	.signup-form .btn:hover, .signup-form .btn:focus {
-		background:darkorange;
+		background:rgb(25, 0, 255);
 	}
 	.signup-form a {
-		color:darkorange;
+		color:rgb(25, 0, 255);
 		text-decoration: none;
 	}	
 	.signup-form a:hover {
@@ -96,7 +96,7 @@
 		position: absolute;
 	}
     h4{
-        color: darkorange;
+        color: rgb(25, 0, 255);
         font-weight: bold;
     }
 
@@ -106,7 +106,7 @@
 <div class="signup-form">	
     <form action="{{url_for('userlogin')}}" method="POST">
         <br/>
-        <h2 style="text-align: center; color: darkorange;">MakeComplaint</h2>
+        <h2 style="text-align: center; color: rgb(25, 0, 255);">MakeComplaint</h2>
         <hr>
         <h4 style="text-align: center;">Login </h4>
         <hr>
@@ -132,12 +132,13 @@
 
             <input type="submit" class="btn btn-primary btn-block btn-lg" onclick="{{url_for('userlogin')}}" value="Login">
 		</div>
-		</form>
+
 		<form action="" method="POST">
-        <div class="form-group">
-<button type="button" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='http://127.0.0.1:5000/register'" >Register</button>
-           
-            </div>
+		<div>
+			<button type="button" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='http://127.0.0.1:5000/register'" >Register</button>	   
+		</div>
+		</form>
+		
         <script>
                 function login(){
           
@@ -170,7 +171,7 @@
      
             </script>     
 
-    </form>
+   
 	
 </body>
 </html>                            
