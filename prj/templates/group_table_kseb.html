@@ -1,8 +1,33 @@
 
 {% extends "bootstrap/base.html"%}
 {%block content%}
-<h1>No : of Records : {{length_kseb}}</h1>
-<h1>Records</h1>
+<div class="w3-top">
+        <div class="w3-bar w3-card  w3-indigo ">
+            <a href="#home" class="w3-bar-item w3-button w3-wide logo" >MakeComplaint</a>
+            <div class="w3-right w3-hide-small">
+                    <p class ="w3-bar-item">Welcome KSRTCAdmin,</p>
+                      <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+                      <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Departments</a>
+                      <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> WORK</a>
+                      <a href="{{url_for('group_complaints',_anchor=myanchor)}}" target="_self" class="notification w3-indigo w3-bar-item w3-button" >
+                        <span>Notifications</span>
+                        <span class="badge">3</span>
+                      </a>
+                      <a href="http://127.0.0.1:5000" class="w3-bar-item w3-button">  <span class="glyphicon glyphicon-log-out"></span>LogOut</a>
+                      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+                    </div>
+                    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+                
+                    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+                      <i class="fa fa-bars"></i>
+                    </a>
+            
+        </div>
+        </div>
+        <br>
+        <br><br>
+        <h1>Records</h1>
+        
 <table class="table table-dark table-striped table-hover">
 
     <tr> <th>ID</th>
@@ -39,12 +64,20 @@
 </table>
 
 {% endblock %}
+
 {%block scripts%}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 {%endblock%}
 {%block styles%}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dept.css') }}">
 {%endblock%}
