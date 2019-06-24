@@ -11,42 +11,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
-body, html {
-  height: 100%;
-  line-height: 1.8;
-}
 
-/* Full height image header */
-.bgimg-1 {
-  background-position: center;
-  background-size: cover;
-  background-image: url("/w3images/mac.jpg");
-  min-height: 100%;
-}
-.w3-bar .w3-button {
-  padding: 16px;
-}
-.notification .badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  padding: 5px 10px;
-  border-radius: 50%;
-  background:darkorange;
-  color: white;
-}
-.logo{
-color: white;
-font-weight: bold;
-}
-a:visited{
-  color: rgb(80, 253, 0)55, 255, 255);
-
-}
-</style>
 <body>
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
@@ -59,7 +25,7 @@ a:visited{
       <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
       <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Departments</a>
       <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> WORK</a>
-      <a href="{{url_for('group_complaints',_anchor=myanchor)}}" class="notification w3-indigo w3-bar-item w3-button" >
+      <a href="{{url_for('group_complaints',_anchor=myanchor)}}" target="_self" class="notification w3-indigo w3-bar-item w3-button" >
         <span>Notifications</span>
         <span class="badge">3</span>
       </a>
