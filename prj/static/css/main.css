@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color:#555;
+    background-color:rgb(25, 0, 255);
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -16,16 +16,16 @@
   }
    
   .sidebar a.active {
-    background-color:darkorange;
+    background-color:rgb(25, 0, 255);
     color: white;
   }
  .aspcl a.hover{
    color:darkorange;
-   background-color: #555
+   background-color: rgb(25, 0, 255)
  }
   
   .sidebar a:hover:not(.active) {
-    background-color: #555;
+    background-color: rgb(25, 0, 255);
     color:darkorange;
     text-decoration: none;
   }
@@ -46,21 +46,24 @@
       float: none;
     }
   }
+  .aclass{
+    color:white;
+  }
 .aclass a:hover{
-  color : darkorange;
+  color : yellow;
   text-decoration: none;
 
 }
 .aclass a:visited{
-  color:white;
-  text-decoration: none;
+  color:yellow;
+    text-decoration: none;
 }
 .btlogin :hover{
   opacity: 0.8;
 
 }
 .btlogin{
-  background-color:darkorange;
+  background-color:rgb(25, 0, 255);
   color: white;
   
   border: none;
@@ -68,12 +71,11 @@
   
 }
 .logdiv{
-  background-color:darkorange;
+  background-color:rgb(25, 0, 255);
   margin-top: 50px
-
 }
 .logbody{
-  background-color: #555;
+  background-color: rgb(25, 0, 255);
 }
 .logbuttona{
   color: white;
