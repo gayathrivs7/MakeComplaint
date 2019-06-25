@@ -10,69 +10,105 @@
     </head>
     {%block scripts%}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     {%endblock%}
     {%block styles%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     {%endblock%}
-    <body style = "background-color: darkorange">
-        <h1 style="text-align:center;color:#555"> MakeComplaint</h1>
-        {% with messages =get_flashed_messages() %}
-        {%if messages%}
-        {%for message in  messages%}
-        <h3>The complaint has been submitted to {{message}}</h3>
-        {%endfor%}  
-        {%endif%}
-        {%endwith%}
-            <div class = "jumbotron" style="height : 300px; width: 1000px;margin-left: 200px;
-            margin-top: 100px;background-color:#555;color:white;">    
-                  
+    <body style = "background-color: whitesmoke">
+        <div class ="container-fluid">
+            <div class ="row">
+                <div class= "col-sm-12" style="padding-left: 0;padding-right: 0;">
+                    <div class="navbar navbar-expand-sm bg-primary navbar-custom ">
+                        <ul class ="navbar-nav">
+                            <div class="nav-header">
+                                    <li class="nav-item">
+                                            <a class="nav-link aclass" href="#" style="font-weight: bold;color: rgb(255, 255, 255);font-size: 20px;">
+                                                MakeComplaint
+                                            </a>
+                                    </li>						
+                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link aclass" href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link aclass" href="{{ url_for('info') }}">
+                                        Data know-how 
+                                    </a>
+                                </li>
+        
+                                <li class="nav-item">
+                                        <a class="nav-link aclass" href="#">
+                                            Contact
+                                        </a>
+                                    </li>
+                        </ul>
+                        <div style="float:right;">
+                            <ul class ="navbar-nav" style=" position: absolute; right: 0; top:0;">
+                                <li class="nav-item">
+                                        <a class="nav-link aclass" href="http://127.0.0.1:5000/">
+                                            LOGOUT
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        
+                                    </li>
+                                    
+                                </ul>
+                    </div>
+                    </div>
+                     </div>
+            </div>
+        </div>
+                <div class ="row">
+                    <div class = "col-sm-3"> 
+                            <div class="sidebar">
+        
+                                    
+                                    
+                                    <a href="#news" class ="active aspcl" style="text-decoration: none ;">Submit Complaint </a>
+                                    <a href="#contact">Account</a>
+                                    <a href="#about">Demo</a>
+                                  </div>
+        
+                    </div>
+                </div>
+            </div>
+        <h1 style="text-align:center;color:indigo"> MakeComplaint</h1>
+       
+            <div class = "jumbotron" style="height : 200px; width: 700px;margin-left: 300px;
+            margin-top: 100px;background-color:#555;color:white; text-align: center">  
+
+                {% with messages =get_flashed_messages() %}
+                {%if messages%}
+                {%for message in  messages%}
+
+                
+                <h3>Your complaint has been submitted to {{message}} department</h3>
+                {%endfor%}  
+                {%endif%}
+                {%endwith%}   
       
-            <h2>{{message}}</h2>
-            {% if flags[0] == 1 %}
-            <h2> Predicted class : {{name[0]}}</h2>
-            {%endif%}
-
-            {%if  flags[1] == 1 %}
-            <h2> Predicted class : {{name[1]}}</h2>
-            {%endif%}
-              
-            {%if  flags[2] ==1%}
-            <h2> Predicted class : {{name[2]}}</h2>
-            {%endif%}
-
-            {%if  flags[3]==1%}
-            <h2> Predicted class : {{name[3]}}</h2>
-            {%endif%}
-            
-            {%if flags[4] == 1%}
-            <h2> Predicted class : {{name[4]}}</h2>
-            {%endif%}
-
-            {%if flags[5] == 1%}
-            <h2> Predicted class : {{name[4]}}</h2>
-            {%endif%}
-
-            {%if flags[6] == 1%}
-            <h2> Predicted class : {{name[2]}}</h2>
-            {%endif%}
-
-            {%if flags[7] == 1%}
-            <h2> Predicted class : {{name[3]}}</h2>
-            {%endif%}
-
-            {%if flags[8] == 1%}
-            <h2> Predicted class : {{name[1]}}</h2>
-            {%endif%}
-    
-            {%if flags[9] == 1%}
-            <h2> Predicted class : {{name[0]}}</h2>
-            {%endif%}
         </div>
         
     

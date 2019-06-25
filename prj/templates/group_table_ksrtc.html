@@ -8,12 +8,11 @@
                     <p class ="w3-bar-item">Welcome KSRTCadmin ,</p>
                       <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
                       <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Departments</a>
-                      <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> WORK</a>
                       <a href="{{url_for('group_complaints',_anchor=myanchor)}}" target="_self" class="notification w3-indigo w3-bar-item w3-button" >
                         <span>Notifications</span>
                         <span class="badge">3</span>
                       </a>
-                      <a href="http://127.0.0.1:5000" class="w3-bar-item w3-button">  <span class="glyphicon glyphicon-log-out"></span>LogOut</a>
+                      <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button">  <span class="glyphicon glyphicon-log-out"></span>LogOut</a>
                       <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
                     </div>
                     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -27,9 +26,9 @@
         <br>
         <br><br>
         <h1>Records</h1>
-        
+<form method="GET">        
 <table class="table table-dark table-striped table-hover">
-
+  
     <tr> <th>ID</th>
         <th>SUBJECT</th>
         <th>CONTENT</th>
@@ -41,6 +40,7 @@
     </tr>
     {% for i in range(0,length_ksrtc) %} 
     <tr>
+       
         <td>{{ksrtc_id[i]}}</td>
        
         <td>{{ksrtc_subject[i]}}</td>
@@ -49,13 +49,17 @@
 
         <td>{{ksrtc_department[i]}}</td>
 
-        <td>{{ksrtc_status}}</td>
+        <td>{{ksrtc_status[i]}}</td>
 
-        <td>{{ksrtc_user_id}}</td>
-
-        <td><input type="submit"  class="btn btn-primary" value="Accept"></td>
-        <td><input type="submit"value="Reject" class="btn btn-danger"></td>
-       
+        <td>{{ksrtc_user_id[i]}}</td>
+        <form action="" method="GET">
+        <td><input type="hidden" id="hide" name="hide" value="{{ksrtc_id[i]}}"></td>
+        <td>
+          <input type="submit"  class="btn btn-primary"  value="Accept" onclick="window.location.href='http://127.0.0.1:5000/acceptdata'" ></td> 
+        </form> 
+        <td><input type="submit"value="Reject" class="btn btn-danger" onclick="window.location.href='http://127.0.0.1:5000'"></td>
+     
+      
     </tr>
 
     {% endfor %}

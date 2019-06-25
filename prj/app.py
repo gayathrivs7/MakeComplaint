@@ -155,9 +155,7 @@ def take():
     print("new notification added")
 
     #return render_template('Success.html',name =name,flags =flags)
-    if subject and message:
-        
-
+    if subject and message:        
         return render_template('Success.html',name=name,flags=flags,)
     else:
         return redirect(url_for('log'))
@@ -372,7 +370,7 @@ def registrationdata():
 
 #Group Complaints
 
-@app.route('/groupComplaints')
+@app.route('/groupComplaints',methods = ['GET', 'POST'])
 def group_complaints():
     username=User.query.all()
     usernames=[]
@@ -510,7 +508,12 @@ def show_notifications():
     length=len(complaints_content_list)
     
     return render_template('table.html',_anchor='myanchor',length=length,complaints_id_list=complaints_id_list,complaints_subject_list=complaints_subject_list,complaints_content_list=complaints_content_list,complaint_department=complaint_department)
-  
+
+#Accept in notifications
+@app.route('/acceptdata',methods=['GET','POST'])
+def accepts():
+    return 'hello'
+     
 #submit complaint
 '''@app.route('/submit',methods=['GET','POST'])
 def submit():
