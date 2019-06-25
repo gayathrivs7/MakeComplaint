@@ -5,12 +5,31 @@ from nltk.stem import WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.stem import PorterStemmer
+from spacy.lang.en.stop_words import STOP_WORDS
+import spacy
+nlp = spacy.load('en')
 
 def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
 
-    stop_words = set(stopwords.words('english'))
+    #stop_words = set(stopwords.words('english'))
+    stop_words=list(STOP_WORDS)
+    stop_words.append('kindly')
+    stop_words.append('shall')
+    stop_words.append('thank')
+    stop_words.append('need')
+    stop_words.append('time')
+    stop_words.append('look')
+    stop_words.append('matter')
+    stop_words.append('personally')
+    stop_words.append('needful')
+    stop_words.append('thankful')
+    stop_words.append('The')
+    stop_words.append('totally')
+    
+    
     water_token = []
     water_list=[]
+  
 
     #Tokenising water data
     
@@ -86,6 +105,33 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
     porter=PorterStemmer()
     stemmer = SnowballStemmer("english")
     lemmatizer = WordNetLemmatizer()
+
+    ##########################################
+    #   SPACY LEMMATISATION                   #
+    #==============>WATER TOKEN
+    water_str=""
+    water_inner=[]
+    water_lemma=[]
+    for i in water_list:
+        water_inner=[]
+        
+        for j in i:
+            doc =nlp(j)
+            for k in doc:
+                water_inner.append(k.lemma_)
+        water_lemma.append(water_inner)
+        
+    print("WaterLemmaSpacy string")
+    print(water_lemma)
+        
+    '''doc=nlp(water_str)
+   
+    for i in doc:
+        water_lemma.append(i.lemma_)
+    print("Spacy lemma")
+    print(water_lemma)'''
+
+
     ############################################ENV lemm
     env_stem = []
     
@@ -247,5 +293,5 @@ def tokenisation(dfwater,dfpwd,dfksrtc,dfkseb,dfenv):
         ksrtc_lemm.append(ksrtc_inner)
     #print(ksrtc_lemm)
         
-    return(water_lemm,pwd_lemm,ksrtc_lemm,kseb_lemm,env_lemm)
+    return(water_list,pwd_list,ksrtc_list,kseb_list,env_list)
     #return(water_list,pwd_list,ksrtc_list,kseb_list,env_list)

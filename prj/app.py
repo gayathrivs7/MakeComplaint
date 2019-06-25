@@ -23,7 +23,7 @@ from flask_migrate import Migrate
 from sqlalchemy.orm import relationship
 
 
-file =   '/home/gayathri/project/MakeComplaint/train.csv'   
+file =   '/home/gayathri/project/MakeComplaint/train1.csv'   
 nlp = spacy.load('en_core_web_md')
 c = Complaint(file,nlp)
 
@@ -465,7 +465,6 @@ def group_complaints():
         kseb_user_id.append(i.user_id)
     length_kseb=len(kseb_id)
     
-
     if username=='wateradmin':
         return render_template('group_table_water.html',water_status=water_status,water_user_id=water_user_id,length_water=length_water,water_id=water_id,water_subject=water_subject,water_content=water_content,water_department=water_department)
     if username=='pwdadmin':

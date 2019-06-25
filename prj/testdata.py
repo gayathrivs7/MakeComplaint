@@ -39,6 +39,20 @@ def test(text_data):
     #===============Removing Stop Words=================================
     spacy_nlp = spacy.load('en_core_web_sm')
     spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
+    spacy_stopwords=list(STOP_WORDS)
+    spacy_stopwords.append('kindly')
+    spacy_stopwords.append('shall')
+    spacy_stopwords.append('thank')
+    spacy_stopwords.append('need')
+    spacy_stopwords.append('time')
+    spacy_stopwords.append('look')
+    spacy_stopwords.append('matter')
+    spacy_stopwords.append('personally')
+    spacy_stopwords.append('needful')
+    spacy_stopwords.append('thankful')
+    spacy_stopwords.append('try')
+    spacy_stopwords.append('The')
+    spacy_stopwords.append('totally')
     for i in test_token:
         if i not in spacy_stopwords:
             test_list.append(i)
